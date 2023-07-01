@@ -1,0 +1,18 @@
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* Create 7 equal-sized columns */
+    gap: 8px;
+    font-size: 1em;
+
+}
+.calendar-grid-header {
+    text-align: center;
+    font-weight: bold;
+}
+
+.calendar-grid-square {
+    text-align: center;
+    padding:1em;
+    border: 1px solid black;
+    max-width: 200px;
+  }
