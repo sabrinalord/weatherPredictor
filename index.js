@@ -33,9 +33,9 @@ app.get("/coordinates", async (req, res) => {
 
     const latitude = response.data.results[0].geometry.lat;
     const longitude = response.data.results[0].geometry.lng;
-    console.log('Latitude:', latitude);
-    console.log('Longitude:', longitude);
-    res.json({ latitude, longitude }); // Send latitude and longitude in the response
+    console.log('inside index.js latitude:', latitude);
+    console.log('inside index.js longitude:', longitude);
+    res.json({ latitude , longitude }); 
 
   } catch (error) {
     console.error(error);

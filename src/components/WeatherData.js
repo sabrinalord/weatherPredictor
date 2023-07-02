@@ -7,26 +7,28 @@ const WeatherData = ({month, latitude, longitude, onDataFetch}) => {
     const [averages, setAverages] = useState("")
 
 
-    const currentDate = new Date();
-            const dateNumber = currentDate.getDate();
-            const formattedDateNumber = String(dateNumber).padStart(2, '0');
-            const currentYear = currentDate.getFullYear();
-            const startYear = currentYear - 5
-            ;
+    const getCurrentDate = () => {
+      const currentDate = new Date();
+      const year = currentDate.getFullYear();
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      const date = String(currentDate.getDate()).padStart(2, '0');
+      const formattedDate = `${year}-${month}-${date}`;
+      return formattedDate;
+    };
+    const startYear = new Date().getFullYear() - 10;
+    
         
     useEffect(() => {
         const fetchWeatherData = async () => {
           console.log('fetching weatherData')
           try {
             const startDate = `${startYear}-${month}-01`;
-            const endDate = `${currentYear}-${month}-${formattedDateNumber}`;
+            const endDate = getCurrentDate();
             const endpoint = `https://archive-api.open-meteo.com/v1/archive?latitude=${latitude}&longitude=${longitude}&start_date=${startDate}&end_date=${endDate}&daily=weathercode,temperature_2m_mean,rain_sum&timezone=Europe%2FLondon`;
             console.log(endpoint)
             const response = await axios.get(endpoint);
             setWeatherData(response.data.daily);
             setError(null);
-            console.log(`this is weatherData ${Object.entries(weatherData)}`)
-
           } catch (error) {
             setError('Failed to fetch weather data');
             console.error(error);
@@ -133,14 +135,16 @@ const calculateAverages = (sortedData) => {
           const sortedData = reorganiseWeatherData(weatherData, month)
           const calculatedAverages = calculateAverages(sortedData)
          setAverages(calculatedAverages)
-         console.log(`averageTemperatures: ${JSON.stringify(averages)}`) 
          onDataFetch(averages)
 
         }
       }, [month, weatherData]);
 
+      useEffect(() => {
+        onDataFetch(averages);
+      }, [averages, onDataFetch]);
+
  
-      
       return null
     };
 

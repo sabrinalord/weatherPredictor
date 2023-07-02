@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Calendar from './components/Calendar';
 import WeatherForm from './components/WeatherForm';
 import WeatherData from './components/WeatherData';
@@ -28,6 +28,11 @@ function App() {
   }
 
 
+  useEffect(() => {
+    setAveragesForSelectedMonth({});
+  }, [selectedMonth, selectedLocation, selectedYear]);
+
+
   return (
     <div className="App">
 
@@ -45,6 +50,7 @@ function App() {
         latitude={selectedLatitude}
         longitude={selectedLongitude} 
         onDataFetch={updateAverages}
+        year={selectedYear}
         />
 
         <Calendar 

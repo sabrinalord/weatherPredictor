@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import './Calendar.css';
 
 
+
+
 const Calendar = ( {month, year, averages}) => {
-  console.log('Inside Calendar component');
-  console.log('Averages:', averages);
 
   const getDaysInMonth = (year, month) => {
     return new Date(year, month, 0).getDate();
@@ -15,19 +15,18 @@ const Calendar = ( {month, year, averages}) => {
   const daysInMonth = getDaysInMonth(parsedYear, parsedMonth);
   const firstDayOfWeek = new Date(parsedYear, parsedMonth - 1, 1).getDay() || 7;
   const blankSquares = Array.from({ length: firstDayOfWeek }, (_, index) => (
-    <div key={`blank-${index}`} className="calendar-grid-square blank-square"></div>
+    <div 
+    key={`blank-${index}`} 
+    className="calendar-grid-square blank-square">
+    </div>
   ));
 
   const daysArray = Array.from({ length: daysInMonth }, (_, index) => index + 1);
-  const averagesArray = Object.values(averages);
-
 
   const renderDaySquare = (day) => {
-
-    const dayData = averagesArray.find((data) => Number(data.date) === day);
-    const { averageTemperature, averageRainSum, modeWeathercode } = dayData || {};
-  
-
+    const dayData = averages[day];
+    const { averageTemperature, averageRainSum, modeWeathercode } =
+      dayData || {};
     return (
       <div key={day} className="calendar-grid-square">
       {day}
@@ -42,6 +41,8 @@ const Calendar = ( {month, year, averages}) => {
     </div>
     );
   };
+
+
 
     return (
       <div className="calendar-grid">
