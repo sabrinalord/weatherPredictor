@@ -4,8 +4,7 @@ import './Calendar.css';
 
 
 
-const Calendar = ( {month, year, averages}) => {
-
+const Calendar = ( {month, year, averages, weatherDataRangeInYears}) => {
   const getDaysInMonth = (year, month) => {
     return new Date(year, month, 0).getDate();
   };
@@ -21,21 +20,21 @@ const Calendar = ( {month, year, averages}) => {
     </div>
   ));
 
-  const daysArray = Array.from({ length: daysInMonth }, (_, index) => index + 1);
+  const daysArray = Array.from({ length: daysInMonth }, (_, index) => index + 1 );
 
   const renderDaySquare = (day) => {
-    const dayData = averages[day];
-    const { averageTemperature, averageRainSum, modeWeathercode } =
+    const dayData = averages[day - 1];
+    const { averageTemperature, averageRainSum, modeWeathercode, frequencyOfWeathercode } =
       dayData || {};
     return (
       <div key={day} className="calendar-grid-square">
       {day}
-
       {dayData && (
         <div>
-          <p>Average Temperature: {averageTemperature}°C</p>
+          <p>Average Highest Temperature: {averageTemperature}°C</p>
           <p>Average Rain Sum: {averageRainSum}</p>
           <p>Mode Weather Code: {modeWeathercode}</p>
+          <p>In the last {weatherDataRangeInYears} years, the most frequent weather code was {modeWeathercode}. It occurred {frequencyOfWeathercode} times</p>
         </div>
       )}
     </div>

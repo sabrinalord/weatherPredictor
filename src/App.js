@@ -12,6 +12,8 @@ function App() {
   const [selectedLongitude, setSelectedLongitude] = useState(null);
   const [averagesForSelectedMonth, setAveragesForSelectedMonth] = useState({});
 
+  const weatherDataRangeInYears = 10
+
 
   const handleFormSubmit = (month, year, latitude, longitude, location) => {
     console.log('Submitted form values:', month, year, latitude, longitude);
@@ -51,12 +53,14 @@ function App() {
         longitude={selectedLongitude} 
         onDataFetch={updateAverages}
         year={selectedYear}
+        weatherDataRangeInYears = {weatherDataRangeInYears}
         />
 
         <Calendar 
         month={selectedMonth}
         year={selectedYear}
         averages={averagesForSelectedMonth}
+        weatherDataRangeInYears ={weatherDataRangeInYears}
         />
         </div>
         )

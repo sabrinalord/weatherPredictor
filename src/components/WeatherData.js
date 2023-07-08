@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const WeatherData = ({month, latitude, longitude, onDataFetch}) => {
+const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeInYears}) => {
     const [error, setError] = useState(null);
     const [weatherData, setWeatherData] = useState({});
-    const [averages, setAverages] = useState("")
-
+    const [averages, setAverages] = useState("");
 
     const getCurrentDate = () => {
       const currentDate = new Date();
@@ -15,8 +14,7 @@ const WeatherData = ({month, latitude, longitude, onDataFetch}) => {
       const formattedDate = `${year}-${month}-${date}`;
       return formattedDate;
     };
-    const startYear = new Date().getFullYear() - 10;
-    
+    const startYear = new Date().getFullYear() - weatherDataRangeInYears
         
     useEffect(() => {
         const fetchWeatherData = async () => {
@@ -24,7 +22,7 @@ const WeatherData = ({month, latitude, longitude, onDataFetch}) => {
           try {
             const startDate = `${startYear}-${month}-01`;
             const endDate = getCurrentDate();
-            const endpoint = `https://archive-api.open-meteo.com/v1/archive?latitude=${latitude}&longitude=${longitude}&start_date=${startDate}&end_date=${endDate}&daily=weathercode,temperature_2m_mean,rain_sum&timezone=Europe%2FLondon`;
+            const endpoint = `https://archive-api.open-meteo.com/v1/archive?latitude=${latitude}&longitude=${longitude}&start_date=${startDate}&end_date=${endDate}&daily=weathercode,temperature_2m_max,rain_sum&timezone=Europe%2FLondon`;
             console.log(endpoint)
             const response = await axios.get(endpoint);
             setWeatherData(response.data.daily);
@@ -39,18 +37,8 @@ const WeatherData = ({month, latitude, longitude, onDataFetch}) => {
       }, [month, latitude, longitude]);
 
 
-      const filterDataByMonth = (month, weatherData) => {
-        return  weatherData.map(([category, values]) => {
-          if (category === "time") {
-            const filteredDates = values.filter(date => date.substring(5, 7) === month);
-            return [category, filteredDates];
-          }
-          return [category, values];
-        });
-      }
-
       const reorganiseWeatherData = (weatherData, month) => {
-        const { time, weathercode, temperature_2m_mean, rain_sum } = weatherData;
+        const { time, weathercode, temperature_2m_max, rain_sum } = weatherData;
         const sortedData = time.reduce((result, date, i) => {
           const dataMonth = date.substring(5, 7);
       
@@ -62,14 +50,14 @@ const WeatherData = ({month, latitude, longitude, onDataFetch}) => {
               obj = {
                 date: day,
                 weathercode: [],
-                temperature_2m_mean: [],
+                temperature_2m_max: [],
                 rain_sum: []
               };
               result.push(obj);
             }
       
             obj.weathercode.push(weathercode[i]);
-            obj.temperature_2m_mean.push(temperature_2m_mean[i]);
+            obj.temperature_2m_max.push(temperature_2m_max[i]);
             obj.rain_sum.push(rain_sum[i]);
           }
       
@@ -102,13 +90,23 @@ const WeatherData = ({month, latitude, longitude, onDataFetch}) => {
         return mode;
       }
 
+      function countFrequency(arr, target) {
+        let count = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] === target) {
+            count++;
+          }
+        }
+        return count;
+      }
+
     
 const calculateAverages = (sortedData) => {
   const averageTemperaturesPerDay = sortedData.map((item) => {
-    const meanTemp = item.temperature_2m_mean.reduce(
+    const meanTemp = item.temperature_2m_max.reduce(
       (sum, temp) => sum + temp,
       0
-    ) / item.temperature_2m_mean.length;
+    ) / item.temperature_2m_max.length;
 
     const meanRain = item.rain_sum.reduce(
       (sum, temp) => sum + temp,
@@ -116,24 +114,27 @@ const calculateAverages = (sortedData) => {
     ) / item.rain_sum.length;
 
     const mostFrequentWeatherCode = findMode(item.weathercode)
-
+    const frequencyOfWeathercode = countFrequency(item.weathercode, mostFrequentWeatherCode)
+   
     return {
       date: item.date,
-      averageTemperature: meanTemp,
-      averageRainSum: meanRain,
-      modeWeathercode: mostFrequentWeatherCode
+      averageTemperature: meanTemp.toFixed(2),
+      averageRainSum: meanRain.toFixed(2),
+      modeWeathercode: mostFrequentWeatherCode,
+      frequencyOfWeathercode: frequencyOfWeathercode,
     };
   });
 
   return averageTemperaturesPerDay
 }
-      
   
 
       useEffect(() => {
         if(Object.keys(weatherData).length > 0) {
           const sortedData = reorganiseWeatherData(weatherData, month)
+          console.log(`here is the sortedData ${JSON.stringify(sortedData)}`)
           const calculatedAverages = calculateAverages(sortedData)
+
          setAverages(calculatedAverages)
          onDataFetch(averages)
 
