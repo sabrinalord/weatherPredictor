@@ -14,7 +14,10 @@ const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeI
       const formattedDate = `${year}-${month}-${date}`;
       return formattedDate;
     };
-    const startYear = new Date().getFullYear() - weatherDataRangeInYears
+
+      var currentYear = new Date().getFullYear();
+      var startYear = currentYear - (weatherDataRangeInYears - 1);
+
         
     useEffect(() => {
         const fetchWeatherData = async () => {
@@ -22,7 +25,7 @@ const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeI
           try {
             const startDate = `${startYear}-${month}-01`;
             const endDate = getCurrentDate();
-            const endpoint = `https://archive-api.open-meteo.com/v1/archive?latitude=${latitude}&longitude=${longitude}&start_date=${startDate}&end_date=${endDate}&daily=weathercode,temperature_2m_max,rain_sum&timezone=Europe%2FLondon`;
+            const endpoint = `https://archive-api.open-meteo.com/v1/archive?latitude=${latitude}&longitude=${longitude}&start_date=${startDate}&end_date=${endDate}&daily=weathercode,temperature_2m_max,precipitation_hours,rain_sum&timezone=Europe%2FLondon`;
             console.log(endpoint)
             const response = await axios.get(endpoint);
             setWeatherData(response.data.daily);
@@ -38,10 +41,10 @@ const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeI
 
 
       const reorganiseWeatherData = (weatherData, month) => {
-        const { time, weathercode, temperature_2m_max, rain_sum } = weatherData;
+        const { time, weathercode, temperature_2m_max, precipitation_hours, rain_sum } = weatherData;
         const sortedData = time.reduce((result, date, i) => {
           const dataMonth = date.substring(5, 7);
-      
+  
           if (dataMonth === month) {
             const day = date.substring(8, 10);
             let obj = result.find(obj => obj.date === day);
@@ -49,8 +52,10 @@ const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeI
             if (!obj) {
               obj = {
                 date: day,
+                month: dataMonth,
                 weathercode: [],
                 temperature_2m_max: [],
+                precipitation_hours: [],
                 rain_sum: []
               };
               result.push(obj);
@@ -59,6 +64,7 @@ const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeI
             obj.weathercode.push(weathercode[i]);
             obj.temperature_2m_max.push(temperature_2m_max[i]);
             obj.rain_sum.push(rain_sum[i]);
+            obj.precipitation_hours.push(precipitation_hours[i]);
           }
       
           return result;
@@ -90,10 +96,10 @@ const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeI
         return mode;
       }
 
-      function countFrequency(arr, target) {
+      function countFrequency(array, target) {
         let count = 0;
-        for (let i = 0; i < arr.length; i++) {
-          if (arr[i] === target) {
+        for (let i = 0; i < array.length; i++) {
+          if (target === !0 ? array[i] !== 0 : array[i] === target) {
             count++;
           }
         }
@@ -109,19 +115,27 @@ const calculateAverages = (sortedData) => {
     ) / item.temperature_2m_max.length;
 
     const meanRain = item.rain_sum.reduce(
-      (sum, temp) => sum + temp,
+      (sum, rain) => sum + rain,
       0
     ) / item.rain_sum.length;
 
+    const meanPrecipitationHours = item.precipitation_hours.reduce(
+      (sum, precipitation) => sum + precipitation,
+      0
+    ) / item.precipitation_hours.length;
+
     const mostFrequentWeatherCode = findMode(item.weathercode)
     const frequencyOfWeathercode = countFrequency(item.weathercode, mostFrequentWeatherCode)
+    const frequencyOfRain = countFrequency(item.rain_sum, !0)
    
     return {
       date: item.date,
       averageTemperature: meanTemp.toFixed(2),
       averageRainSum: meanRain.toFixed(2),
+      averagePrecipitationHours: meanPrecipitationHours.toFixed(2),
       modeWeathercode: mostFrequentWeatherCode,
       frequencyOfWeathercode: frequencyOfWeathercode,
+      frequencyOfRain: frequencyOfRain
     };
   });
 

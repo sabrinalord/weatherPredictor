@@ -1,102 +1,402 @@
 {
-    "00": "Cloud development not observed or not observable",
-    "01": "Cloud generally dissolving or becoming less developed",
-    "02": "State of sky on the whole unchanged",
-    "03": "Clouds generally forming or developing",
-    "04": "Visibility reduced by smoke, e.g. veldt or forest fires, industrial smoke or volcanic ashes",
-    "05": "Haze",
-    "06": "Widespread dust in suspension in the air, not raised by wind at or near the station at the time of observation",
-    "07": "Dust or sand raised by wind at or near the station at the time of observation, but not well-developed dust whirl(s) or sand whirl(s), and no duststorm or sandstorm seen; or, in the case of ships, blowing spray at the station",
-    "08": "Well-developed dust or sand whirl(s) seen at or near the station during the preceding hour or at the time of observation, but no dust storm or sandstorm",
-    "09": "Duststorm or sandstorm within sight at the time of observation, or at the station during the preceding hour",
-    "10": "Mist",
-    "11": "Patches of shallow fog or ice fog at the station, whether on land or sea not deeper than about 2 metres on land or 10 metres at sea",
-    "12": "More or less continuous shallow fog or ice fog at the station, whether on land or sea, not deeper than about 2m/land or 10m/sea",
-    "13": "Lightning visible, no thunder heard",
-    "14": "Precipitation within sight, not reaching the ground or the surface of the sea",
-    "15": "Precipitation within sight, reaching the ground or the surface of the sea, but distant, i.e. > 5 km from the station",
-    "16": "Precipitation within sight, reaching the ground or the surface of the sea, near to, but not at the station",
-    "17": "Thunderstorm, but no precipitation at the time of observation",
-    "18": "Squalls at or within sight of the station during the preceding hour or at the time of observation",
-    "19": "Funnel clouds at or within sight of the station during the preceding hour or at the time of observation",
-    "20": "Drizzle (not freezing) or snow grains, not falling as showers, during the preceding hour but not at the time of observation",
-    "21": "Rain (not freezing), not falling as showers, during the preceding hour but not at the time of observation",
-    "22": "Snow, not falling as showers, during the preceding hour but not at the time of observation",
-    "23": "Rain and snow or ice pellets, not falling as showers; during the preceding hour but not at the time of observation",
-    "24": "Freezing drizzle or freezing rain; during the preceding hour but not at the time of observation",
-    "25": "Shower(s) of rain during the preceding hour but not at the time of observation",
-    "26": "Shower(s) of snow, or of rain and snow during the preceding hour but not at the time of observation",
-    "27": "Shower(s) of hail, or of rain and hail during the preceding hour but not at the time of observation",
-    "28": "Fog or ice fog during the preceding hour but not at the time of observation",
-    "29": "Thunderstorm (with or without precipitation) during the preceding hour but not at the time of observation",
-    "30": "Slight or moderate duststorm or sandstorm - has decreased during the preceding hour",
-    "31": "Slight or moderate duststorm or sandstorm - no appreciable change during the preceding hour",
-    "32": "Slight or moderate duststorm or sandstorm - has begun or has increased during the preceding hour",
-    "33": "Severe duststorm or sandstorm - has decreased during the preceding hour",
-    "34": "Severe duststorm or sandstorm - no appreciable change during the preceding hour",
-    "35": "Severe duststorm or sandstorm - has begun or has increased during the preceding hour",
-    "36": "Slight/moderate drifting snow - generally low (below eye level)",
-    "37": "Heavy drifting snow - generally low (below eye level)",
-    "38": "Slight/moderate blowing snow - generally high (above eye level)",
-    "39": "Heavy blowing snow - generally high (above eye level)",
-    "40": "Fog or ice fog at a distance at the time of observation, but not at the station during the preceding hour, the fog or ice fog extending to a level above that of the observer",
-    "41": "Fog or ice fog in patches",
-    "42": "Fog/ice fog, sky visible, has become thinner during the preceding hour",
-    "43": "Fog/ice fog, sky invisible, has become thinner during the preceding hour",
-    "44": "Fog or ice fog, sky visible, no appreciable change during the past hour",
-    "45": "Fog or ice fog, sky invisible, no appreciable change during the preceding hour",
-    "46": "Fog or ice fog, sky visible, has begun or has become thicker during preceding hour",
-    "47": "Fog or ice fog, sky invisible, has begun or has become thicker during the preceding hour",
-    "48": "Fog, depositing rime, sky visible",
-    "49": "Fog, depositing rime, sky invisible",
-    "50": "Drizzle, not freezing, intermittent, slight at time of ob.",
-    "51": "Drizzle, not freezing, continuous, slight at time of ob.",
-    "52": "Drizzle, not freezing, intermittent, moderate at time of ob.",
-    "53": "Drizzle, not freezing, continuous, moderate at time of ob.",
-    "54": "Drizzle, not freezing, intermittent, heavy at time of ob.",
-    "55": "Drizzle, not freezing, continuous, heavy at time of ob.",
-    "56": "Drizzle, freezing, slight",
-    "57": "Drizzle, freezing, moderate or heavy (dense)",
-    "58": "Rain and drizzle, slight",
-    "59": "Rain and drizzle, moderate or heavy",
-    "60": "Rain, not freezing, intermittent, slight at time of ob.",
-    "61": "Rain, not freezing, continuous, slight at time of ob.",
-    "62": "Rain, not freezing, intermittent, moderate at time of ob.",
-    "63": "Rain, not freezing, continuous, moderate at time of ob.",
-    "64": "Rain, not freezing, intermittent, heavy at time of ob.",
-    "65": "Rain, not freezing, continuous, heavy at time of ob.",
-    "66": "Rain, freezing, slight",
-    "67": "Rain, freezing, moderate or heavy",
-    "68": "Rain or drizzle and snow, slight",
-    "69": "Rain or drizzle and snow, moderate or heavy",
-    "70": "Intermittent fall of snowflakes, slight at time of ob.",
-    "71": "Continuous fall of snowflakes, slight at time of ob.",
-    "72": "Intermittent fall of snowflakes, moderate at time of ob.",
-    "73": "Continuous fall of snowflakes, moderate at time of ob.",
-    "74": "Intermittent fall of snowflakes, heavy at time of ob.",
-    "75": "Continuous fall of snowflakes, heavy at time of ob.",
-    "76": "Diamond dust (with or without fog)",
-    "77": "Snow grains (with or without fog)",
-    "78": "Isolated star-like snow crystals (with or without fog)",
-    "79": "Ice pellets",
-    "80": "Rain shower(s), slight",
-    "81": "Rain shower(s), moderate or heavy",
-    "82": "Rain shower(s), violent",
-    "83": "Shower(s) of rain and snow, slight",
-    "84": "Shower(s) of rain and snow, moderate or heavy",
-    "85": "Snow shower(s), slight",
-    "86": "Snow shower(s), moderate or heavy",
-    "87": "Shower(s) of snow pellets or small hail, with or without rain or rain and snow mixed - slight",
-    "88": "Shower(s) of snow pellets or small hail, with or without rain or rain and snow mixed - moderate or heavy",
-    "89": "Shower(s) of hail, with or without rain or rain and snow mixed, not associated with thunder - slight",
-    "90": "Shower(s) of hail, with or without rain or rain and snow mixed, not associated with thunder - moderate or heavy",
-    "91": "Slight rain at time of observation - Thunderstorm during the preceding hour but not at time of observation",
-    "92": "Moderate or heavy rain at time of observation - Thunderstorm during the preceding hour but not at time of observation",
-    "93": "Slight snow, or rain and snow mixed or hail at time of observation - Thunderstorm during the preceding hour but not at time of observation",
-    "94": "Moderate or heavy snow, or rain and snow mixed or hail at time of observation - Thunderstorm during the preceding hour but not at time of observation",
-    "95": "Thunderstorm, slight or moderate, without hail, but with rain and/or snow at time of observation",
-    "96": "Thunderstorm, slight or moderate, with hail at time of ob.",
-    "97": "Thunderstorm, heavy, without hail, but with rain and/or snow at time of observation",
-    "98": "Thunderstorm combined with dust/sandstorm at time of observation",
-    "99": "Thunderstorm, heavy with hail at time of observation"
+  "0": {
+    "description": "Clear sky",
+    "image": "☀️"
+  },
+  "1": {
+    "description": "Mainly clear sky, a few clouds",
+    "image": "🌤️"
+  },
+  "2": {
+    "description": "Partly cloudy",
+    "image": "🌥️"
+  },
+  "3": {
+    "description": "Cloudy, overcast sky",
+    "image": "☁️"
+  },
+  "4": {
+    "description": "Visibility reduced by smoke, e.g. veldt or forest fires, industrial smoke or volcanic ashes",
+    "image": "🌫️"
+  },
+  "5": {
+    "description": "Haze",
+    "image": "🌫️"
+  },
+  "6": {
+    "description": "Widespread dust in suspension in the air, not raised by wind at or near the station at the time of observation",
+    "image": "💨"
+  },
+  "7": {
+    "description": "Dust or sand raised by wind at or near the station at the time of observation, but not well-developed dust whirl(s) or sand whirl(s), and no duststorm or sandstorm seen; or, in the case of ships, blowing spray at the station",
+    "image": "💨"
+  },
+  "8": {
+    "description": "Well-developed dust or sand whirl(s) seen at or near the station during the preceding hour or at the time of observation, but no dust storm or sandstorm",
+    "image": "💨"
+  },
+  "9": {
+    "description": "Duststorm or sandstorm within sight at the time of observation, or at the station during the preceding hour",
+    "image": "🌪️"
+  },
+  "10": {
+    "description": "Mist",
+    "image": "🌫️"
+  },
+  "11": {
+    "description": "Patches of shallow fog or ice fog at the station, whether on land or sea not deeper than about 2 metres on land or 10 metres at sea",
+    "image": "🌫️"
+  },
+  "12": {
+    "description": "More or less continuous shallow fog or ice fog at the station, whether on land or sea, not deeper than about 2m/land or 10m/sea",
+    "image": "🌫️"
+  },
+  "13": {
+    "description": "Lightning visible, no thunder heard",
+    "image": "🌩️"
+  },
+  "14": {
+    "description": "Precipitation within sight, not reaching the ground or the surface of the sea",
+    "image": "🌧️"
+  },
+  "15": {
+    "description": "Precipitation within sight, reaching the ground or the surface of the sea, but distant, i.e. > 5 km from the station",
+    "image": "🌧️"
+  },
+  "16": {
+    "description": "Precipitation within sight, reaching the ground or the surface of the sea, near to, but not at the station",
+    "image": "🌧️"
+  },
+  "17": {
+    "description": "Thunderstorm, but no precipitation at the time of observation",
+    "image": "⛈️"
+  },
+  "18": {
+    "description": "Squalls at or within sight of the station during the preceding hour or at the time of observation",
+    "image": "💨"
+  },
+  "19": {
+    "description": "Funnel clouds at or within sight of the station during the preceding hour or at the time of observation",
+    "image": "🌪️"
+  },
+  "20": {
+    "description": "Drizzle (not freezing) or snow grains, not falling as showers, during the preceding hour but not at the time of observation",
+    "image": "🌧️"
+  },
+  "21": {
+    "description": "Rain (not freezing), not falling as showers, during the preceding hour but not at the time of observation",
+    "image": "🌧️"
+  },
+  "22": {
+    "description": "Snow, not falling as showers, during the preceding hour but not at the time of observation",
+    "image": "❄️"
+  },
+  "23": {
+    "description": "Rain and snow or ice pellets, not falling as showers; during the preceding hour but not at the time of observation",
+    "image": "🌧️❄️"
+  },
+  "24": {
+    "description": "Freezing drizzle or freezing rain; during the preceding hour but not at the time of observation",
+    "image": "🌧️❄️"
+  },
+  "25": {
+    "description": "Shower(s) of rain during the preceding hour but not at the time of observation",
+    "image": "🌧️"
+  },
+  "26": {
+    "description": "Shower(s) of snow, or of rain and snow during the preceding hour but not at the time of observation",
+    "image": "🌧️❄️"
+  },
+  "27": {
+    "description": "Shower(s) of hail, or of rain and hail during the preceding hour but not at the time of observation",
+    "image": "🌧️❄️"
+  },
+  "28": {
+    "description": "Fog or ice fog during the preceding hour but not at the time of observation",
+    "image": "🌫️"
+  },
+  "29": {
+    "description": "Thunderstorm (with or without precipitation) during the preceding hour but not at the time of observation",
+    "image": "⛈️"
+  },
+  "30": {
+    "description": "Slight or moderate duststorm or sandstorm - has decreased during the preceding hour",
+    "image": "💨"
+  },
+  "31": {
+    "description": "Slight or moderate duststorm or sandstorm - no appreciable change during the preceding hour",
+    "image": "💨"
+  },
+  "32": {
+    "description": "Slight or moderate duststorm or sandstorm - has begun or has increased during the preceding hour",
+    "image": "💨"
+  },
+  "33": {
+    "description": "Severe duststorm or sandstorm - has decreased during the preceding hour",
+    "image": "💨"
+  },
+  "34": {
+    "description": "Severe duststorm or sandstorm - no appreciable change during the preceding hour",
+    "image": "💨"
+  },
+  "35": {
+    "description": "Severe duststorm or sandstorm - has begun or has increased during the preceding hour",
+    "image": "💨"
+  },
+  "36": {
+    "description": "Slight/moderate drifting snow - generally low (below eye level)",
+    "image": "❄️"
+  },
+  "37": {
+    "description": "Heavy drifting snow - generally low (below eye level)",
+    "image": "❄️"
+  },
+  "38": {
+    "description": "Slight/moderate blowing snow - generally high (above eye level)",
+    "image": "❄️"
+  },
+  "39": {
+    "description": "Heavy blowing snow - generally high (above eye level)",
+    "image": "❄️"
+  },
+  "40": {
+    "description": "Fog or ice fog at a distance at the time of observation, but not at the station during the preceding hour, the fog or ice fog extending to a level above that of the observer",
+    "image": "🌫️"
+  },
+  "41": {
+    "description": "Fog or ice fog in patches",
+    "image": "🌫️"
+  },
+  "42": {
+    "description": "Fog/ice fog, sky visible, has become thinner during the preceding hour",
+    "image": "🌫️"
+  },
+  "43": {
+    "description": "Fog/ice fog, sky invisible, has become thinner during the preceding hour",
+    "image": "🌫️"
+  },
+  "44": {
+    "description": "Fog or ice fog, sky visible, no appreciable change during the past hour",
+    "image": "🌫️"
+  },
+  "45": {
+    "description": "Fog or ice fog, sky invisible, no appreciable change during the preceding hour",
+    "image": "🌫️"
+  },
+  "46": {
+    "description": "Fog or ice fog, sky visible, has begun or has become thicker during the preceding hour",
+    "image": "🌫️"
+  },
+  "47": {
+    "description": "Fog or ice fog, sky invisible, has begun or has become thicker during the preceding hour",
+    "image": "🌫️"
+  },
+  "48": {
+    "description": "Fog, depositing rime, sky visible",
+    "image": "🌫️"
+  },
+  "49": {
+    "description": "Fog, depositing rime, sky invisible",
+    "image": "🌫️"
+  },
+  "50": {
+    "description": "Light, intermittent drizzle",
+    "image": "🌧️"
+  },
+  "51": {
+    "description": "Light, continuous drizzle",
+    "image": "🌧️"
+  },
+  "52": {
+    "description": "Moderate, intermittent, drizzle",
+    "image": "🌧️"
+  },
+  "53": {
+    "description": "Moderate, continuous, drizzle",
+    "image": "🌧️"
+  },
+  "54": {
+    "description": "Heavy, intermittent, drizzle",
+    "image": "🌧️"
+  },
+  "55": {
+    "description": "Heavy, continuous, drizzle",
+    "image": "🌧️"
+  },
+  "56": {
+    "description": "Drizzle, freezing, slight",
+    "image": "🌧️❄️"
+  },
+  "57": {
+    "description": "Drizzle, freezing, moderate or heavy (dense)",
+    "image": "🌧️❄️"
+  },
+  "58": {
+    "description": "Rain and drizzle, slight",
+    "image": "🌧️"
+  },
+  "59": {
+    "description": "Rain and drizzle, moderate or heavy",
+    "image": "🌧️"
+  },
+  "60": {
+    "description": "Rain, not freezing, intermittent, slight at time of observation.",
+    "image": "🌧️"
+  },
+  "61": {
+    "description": "Rain, not freezing, continuous, slight at time of observation.",
+    "image": "🌧️"
+  },
+  "62": {
+    "description": "Rain, not freezing, intermittent, moderate at time of observation.",
+    "image": "🌧️"
+  },
+  "63": {
+    "description": "Rain, not freezing, continuous, moderate at time of observation.",
+    "image": "🌧️"
+  },
+  "64": {
+    "description": "Rain, not freezing, intermittent, heavy at time of observation.",
+    "image": "🌧️"
+  },
+  "65": {
+    "description": "Rain, not freezing, continuous, heavy at time of observation.",
+    "image": "🌧️"
+  },
+  "66": {
+    "description": "Rain, freezing, slight",
+    "image": "🌧️❄️"
+  },
+  "67": {
+    "description": "Rain, freezing, moderate or heavy",
+    "image": "🌧️❄️"
+  },
+  "68": {
+    "description": "Rain or drizzle and snow, slight",
+    "image": "🌧️❄️"
+  },
+  "69": {
+    "description": "Rain or drizzle and snow, moderate or heavy",
+    "image": "🌧️❄️"
+  },
+  "70": {
+    "description": "Intermittent fall of snowflakes, slight at time of observation.",
+    "image": "❄️"
+  },
+  "71": {
+    "description": "Continuous fall of snowflakes, slight at time of observation.",
+    "image": "❄️"
+  },
+  "72": {
+    "description": "Intermittent fall of snowflakes, moderate at time of observation.",
+    "image": "❄️"
+  },
+  "73": {
+    "description": "Continuous fall of snowflakes, moderate at time of observation.",
+    "image": "❄️"
+  },
+  "74": {
+    "description": "Intermittent fall of snowflakes, heavy at time of observation.",
+    "image": "❄"
+  },
+  "75": {
+    "description": "Continuous fall of snowflakes, heavy at time of observation.",
+    "image": "❄️"
+  },
+  "76": {
+    "description": "Diamond dust (with or without fog)",
+    "image": "❄️"
+  },
+  "77": {
+    "description": "Snow grains (with or without fog)",
+    "image": "❄️"
+  },
+  "78": {
+    "description": "Isolated star-like snow crystals (with or without fog)",
+    "image": "❄️"
+  },
+  "79": {
+    "description": "Ice pellets",
+    "image": "❄️"
+  },
+  "80": {
+    "description": "Rain shower(s), slight",
+    "image": "🌧️"
+  },
+  "81": {
+    "description": "Rain shower(s), moderate or heavy",
+    "image": "🌧️"
+  },
+  "82": {
+    "description": "Rain shower(s), violent",
+    "image": "🌧️"
+  },
+  "83": {
+    "description": "Shower(s) of rain and snow, slight",
+    "image": "🌧️❄️"
+  },
+  "84": {
+    "description": "Shower(s) of rain and snow, moderate or heavy",
+    "image": "🌧️❄️"
+  },
+  "85": {
+    "description": "Snow shower(s), slight",
+    "image": "❄️"
+  },
+  "86": {
+    "description": "Snow shower(s), moderate or heavy",
+    "image": "❄️"
+  },
+  "87": {
+    "description": "Shower(s) of snow pellets or small hail, with or without rain or rain and snow mixed - slight",
+    "image": "🌨️"
+  },
+  "88": {
+    "description": "Shower(s) of snow pellets or small hail, with or without rain or rain and snow mixed - moderate or heavy",
+    "image": "🌨️"
+  },
+  "89": {
+    "description": "Shower(s) of hail, with or without rain or rain and snow mixed, not associated with thunder - slight",
+    "image": "🌨️"
+  },
+  "90": {
+    "description": "Shower(s) of hail, with or without rain or rain and snow mixed, not associated with thunder - moderate or heavy",
+    "image": "🌨️"
+  },
+  "91": {
+    "description": "Slight rain at time of observation - Thunderstorm during the preceding hour but not at time of observation",
+    "image": "🌧️⛈️"
+  },
+  "92": {
+    "description": "Moderate or heavy rain at time of observation - Thunderstorm during the preceding hour but not at time of observation",
+    "image": "🌧️⛈️"
+  },
+  "93": {
+    "description": "Slight snow, or rain and snow mixed or hail at time of observation - Thunderstorm during the preceding hour but not at time of observation",
+    "image": "🌨️⛈️"
+  },
+  "94": {
+    "description": "Moderate or heavy snow, or rain and snow mixed or hail at time of observation - Thunderstorm during the preceding hour but not at time of observation",
+    "image": "🌨️⛈️"
+  },
+  "95": {
+    "description": "Thunderstorm, slight or moderate, without hail, but with rain and/or snow at time of observation",
+    "image": "⛈️"
+  },
+  "96": {
+    "description": "Thunderstorm, slight or moderate, with hail at time of observation.",
+    "image": "⛈️"
+  },
+  "97": {
+    "description": "Thunderstorm, heavy, without hail, but with rain and/or snow at time of observation",
+    "image": "⛈️"
+  },
+  "98": {
+    "description": "Thunderstorm combined with dust/sandstorm at time of observation",
+    "image": "⛈️💨"
+  },
+  "99": {
+    "description": "Thunderstorm, heavy with hail at time of observation",
+    "image": "⛈️"
   }
+}

@@ -11,7 +11,6 @@ const WeatherForm = ({ onFormSubmit }) => {
     const [longitude, setLongitude] = useState()
 
 
-
     const handleSubmit = async (event) => {
       event.preventDefault();
       const {latitude , longitude} =  await getLocationCoordinates(location);
@@ -69,27 +68,26 @@ const WeatherForm = ({ onFormSubmit }) => {
     
 
     return (
-        <form className="monthAndLocationForm" onSubmit={handleSubmit}>
-            <label>
-            Select Month:
-        <select value={month} onChange={handleChangeMonth}>
-        {months.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.name}
-          </option>
-        ))}
-      </select>
-            </label>
-            <label>
-                Year:
-                <input type="text" value={year} onChange={(e) => setYear(e.target.value)} />
-            </label>
-            <label>
-                Location:
-                <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
-            </label>
-            <button type="submit">Submit</button>
-        </form>
+      <form className="monthAndLocationForm" onSubmit={handleSubmit}>
+        <label>Select Month:</label> 
+          <select value={month} onChange={handleChangeMonth}>
+            {months.map((option) => (
+            <option 
+              key={option.value} 
+              value={option.value}>
+              {option.name}
+            </option>
+            ))}
+          </select>
+
+        <label>Year:</label>
+            <input type="text" value={year} onChange={(e) => setYear(e.target.value)} />
+
+        <label> Location:</label>
+            <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
+
+        <button type="submit">Submit</button>
+      </form>
     );
 };
 

@@ -2,8 +2,7 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* Create 7 equal-sized columns */
     gap: 8px;
-    font-size: 1em;
-
+    font-size: 16px;
 }
 .calendar-grid-header {
     text-align: center;
@@ -11,8 +10,34 @@
 }
 
 .calendar-grid-square {
-    text-align: center;
-    padding:1em;
+    padding:5px;
     border: 1px solid black;
     max-width: 200px;
+    text-align:center;
   }
+
+
+  .card-header{
+    border-bottom: 1px solid black;
+    padding-top: 2px;
+    padding-bottom: 2px
+
+  }
+
+
+  .card-emoji{
+    font-size:70px;
+  }
+
+  .small-emoji{
+    font-size:40px;
+  }
+
+  .weather-details{
+    display:flex;
+    text-align: left;
+    padding: 2px;
+    font-size:14px;
+  }
+
+ 

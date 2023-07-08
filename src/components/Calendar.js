@@ -1,5 +1,6 @@
 import React, { useState, useEffect }  from 'react';
 import './Calendar.css';
+import weatherCodes from '../weatherCodes.json';
 
 
 
@@ -24,17 +25,43 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears}) => {
 
   const renderDaySquare = (day) => {
     const dayData = averages[day - 1];
-    const { averageTemperature, averageRainSum, modeWeathercode, frequencyOfWeathercode } =
+    const { averageTemperature, averageRainSum, averagePrecipitationHours, modeWeathercode, frequencyOfWeathercode, frequencyOfRain } =
       dayData || {};
+
+     const frequencyOfWeatherCodeAsPercentage = Math.ceil((frequencyOfWeathercode / weatherDataRangeInYears) * 100);
+     const frequencyOfRainAsPercentage = Math.ceil((frequencyOfRain / weatherDataRangeInYears) * 100);
+
+     const weatherDescription = weatherCodes[modeWeathercode]
+  
     return (
       <div key={day} className="calendar-grid-square">
-      {day}
+      <div className="card-header">{day}</div> 
       {dayData && (
         <div>
-          <p>Average Highest Temperature: {averageTemperature}°C</p>
-          <p>Average Rain Sum: {averageRainSum}</p>
-          <p>Mode Weather Code: {modeWeathercode}</p>
-          <p>In the last {weatherDataRangeInYears} years, the most frequent weather code was {modeWeathercode}. It occurred {frequencyOfWeathercode} times</p>
+          <p>Average Temperature: {averageTemperature}°C</p>
+
+          {frequencyOfRainAsPercentage > 60 ? 
+          <span className="card-emoji">🌧‍</span> 
+          : frequencyOfRainAsPercentage > 49 ? 
+          <span className="card-emoji">😬</span> 
+          : <span className="card-emoji">👍</span>
+        }
+          <p>It rained {frequencyOfRain} times in the last {weatherDataRangeInYears} years.</p>
+
+        { 
+        frequencyOfWeatherCodeAsPercentage > 49 ?
+        <div className="weather-details">
+          <span>{weatherDescription.description} {frequencyOfWeatherCodeAsPercentage}% of the time</span> 
+          <span className="small-emoji">{weatherDescription.image}</span>
+
+         </div>
+         :
+         <div className="weather-details">
+         <span>Mixed weather conditions </span>
+         <span className="small-emoji">🤷🏻‍♀️</span>
+         </div>
+          }
+
         </div>
       )}
     </div>
