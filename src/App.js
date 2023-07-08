@@ -38,15 +38,14 @@ function App() {
   return (
     <div className="App">
 
-       <h1>Weather Predictor</h1>
-
-       <p>Predict the weather based on the last {weatherDataRangeInYears} years of weather data</p>
-
+      
+      <div className="form-wrapper">
+        <h1>Weather Predictor</h1>
+        <p>Predict the weather based on the last {weatherDataRangeInYears} years of weather data</p>
         <WeatherForm onFormSubmit={handleFormSubmit} />
-        {selectedMonth && selectedLocation && selectedYear 
-        && (
+      </div>
+     
 
-          <div>
         <WeatherData    
         month={selectedMonth}
         latitude={selectedLatitude}
@@ -56,17 +55,18 @@ function App() {
         weatherDataRangeInYears = {weatherDataRangeInYears}
         />
 
-        <Calendar 
-        month={selectedMonth}
-        year={selectedYear}
-        averages={averagesForSelectedMonth}
-        weatherDataRangeInYears ={weatherDataRangeInYears}
-        />
-        </div>
+        {selectedMonth && selectedLocation && selectedYear 
+        && (
+          <div className="calendar-wrapper">
+            <Calendar 
+            month={selectedMonth}
+            year={selectedYear}
+            averages={averagesForSelectedMonth}
+            weatherDataRangeInYears ={weatherDataRangeInYears}
+            />
+          </div>
         )
-        
         }
-
         
     </div>
   );

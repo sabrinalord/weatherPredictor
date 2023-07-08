@@ -51,7 +51,7 @@ const WeatherForm = ({ onFormSubmit }) => {
       };
 
     const months = [
-        { value: '00', name: '-- Select a month --' },
+        { value: '00', name: '' },
         { value: '01', name: 'January' },
         { value: '02', name: 'February' },
         { value: '03', name: 'March' },
@@ -68,26 +68,44 @@ const WeatherForm = ({ onFormSubmit }) => {
     
 
     return (
-      <form className="monthAndLocationForm" onSubmit={handleSubmit}>
-        <label>Select Month:</label> 
-          <select value={month} onChange={handleChangeMonth}>
-            {months.map((option) => (
-            <option 
-              key={option.value} 
-              value={option.value}>
-              {option.name}
-            </option>
-            ))}
-          </select>
 
-        <label>Year:</label>
-            <input type="text" value={year} onChange={(e) => setYear(e.target.value)} />
+<form className="form-container" onSubmit={handleSubmit}>
 
-        <label> Location:</label>
-            <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
 
-        <button type="submit">Submit</button>
-      </form>
+
+<div className="form-row">
+
+  <label for='month'>Select Month:</label>
+              <select  name='month' value={month} onChange={handleChangeMonth}>
+                {months.map((option) => (
+                <option 
+                  key={option.value} 
+                  value={option.value}>
+                  {option.name}
+                </option>
+                ))}
+              </select>
+          </div>
+
+
+          <div className="form-row">
+          <label for='year'>Year:</label>
+              <input className="form-input" name='year' type="text" value={year} onChange={(e) => setYear(e.target.value)} />
+          </div>
+
+          <div className="form-row">
+          <label for='location'>Location:</label>
+              <input className="form-input" name='location' type="text" placeholder="London, UK" value={location} onChange={(e) => setLocation(e.target.value)} />
+          </div>
+
+
+          <div className="button-container">
+          <button className="form-button" type="submit">Submit</button>      
+            </div> 
+
+</form>
+
+     
     );
 };
 

@@ -2,7 +2,8 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* Create 7 equal-sized columns */
     gap: 8px;
-    font-size: 16px;
+    font-size: 14px;
+    max-width:1000px;
 }
 .calendar-grid-header {
     text-align: center;
@@ -12,10 +13,8 @@
 .calendar-grid-square {
     padding:5px;
     border: 1px solid black;
-    max-width: 200px;
     text-align:center;
   }
-
 
   .card-header{
     border-bottom: 1px solid black;
@@ -24,9 +23,8 @@
 
   }
 
-
   .card-emoji{
-    font-size:70px;
+    font-size:50px;
   }
 
   .small-emoji{
