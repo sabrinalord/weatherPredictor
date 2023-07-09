@@ -10,7 +10,7 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears}) => {
     return new Date(year, month, 0).getDate();
   };
 
-  const parsedMonth = new Date(`${month} 1, ${year}`).getMonth() + 1; 
+  const parsedMonth = new Date(`${month.value} 1, ${year}`).getMonth() + 1; 
   const parsedYear = parseInt(year, 10); 
   const daysInMonth = getDaysInMonth(parsedYear, parsedMonth);
   const firstDayOfWeek = new Date(parsedYear, parsedMonth - 1, 1).getDay() || 7;
@@ -71,6 +71,8 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears}) => {
 
 
     return (
+      <div>
+      <h3>{month.name}</h3>
       <div className="calendar-grid">
         <div className="calendar-grid-header">Sun</div>
         <div className="calendar-grid-header">Mon</div>
@@ -82,6 +84,7 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears}) => {
 
         {blankSquares}
         {daysArray.map((day) => renderDaySquare(day))} 
+    </div>
     </div>
     );
 };

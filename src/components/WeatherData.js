@@ -21,9 +21,9 @@ const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeI
         
     useEffect(() => {
         const fetchWeatherData = async () => {
-          console.log('fetching weatherData')
+          console.log(`fetching weatherData with month.value as: ${month.value}`)
           try {
-            const startDate = `${startYear}-${month}-01`;
+            const startDate = `${startYear}-${month.value}-01`;
             const endDate = getCurrentDate();
             const endpoint = `https://archive-api.open-meteo.com/v1/archive?latitude=${latitude}&longitude=${longitude}&start_date=${startDate}&end_date=${endDate}&daily=weathercode,temperature_2m_max,precipitation_hours,rain_sum&timezone=Europe%2FLondon`;
             console.log(endpoint)
@@ -145,7 +145,7 @@ const calculateAverages = (sortedData) => {
 
       useEffect(() => {
         if(Object.keys(weatherData).length > 0) {
-          const sortedData = reorganiseWeatherData(weatherData, month)
+          const sortedData = reorganiseWeatherData(weatherData, month.value)
           console.log(`here is the sortedData ${JSON.stringify(sortedData)}`)
           const calculatedAverages = calculateAverages(sortedData)
 

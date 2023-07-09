@@ -5,7 +5,7 @@ import WeatherData from './components/WeatherData';
 import './App.css';
 
 function App() {
-  const [selectedMonth, setSelectedMonth] = useState('');
+  const [selectedMonth, setSelectedMonth] = useState({ value: '00', name: '' });
   const [selectedLocation, setSelectedLocation] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
   const [selectedLatitude, setSelectedLatitude] = useState(null);
@@ -16,7 +16,6 @@ function App() {
 
 
   const handleFormSubmit = (month, year, latitude, longitude, location) => {
-    console.log('Submitted form values:', month, year, latitude, longitude);
     setSelectedMonth(month);
     setSelectedYear(year);
     setSelectedLatitude(latitude);

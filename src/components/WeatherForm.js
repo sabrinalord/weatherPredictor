@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 const WeatherForm = ({ onFormSubmit }) => {
-    const [month, setMonth] = useState();
+    const [month, setMonth] = useState({ value: '00', name: '' });
     const [location, setLocation] = useState('');
     const [year, setYear] = useState('');
     const [latitude, setLatitude] = useState()
@@ -44,7 +44,7 @@ const WeatherForm = ({ onFormSubmit }) => {
         const selectedMonthOption = months.find(
           (option) => option.value == selectedMonthNumber);
         if (selectedMonthOption) {
-          setMonth(selectedMonthOption.value);
+          setMonth(selectedMonthOption);
         } else {
           setMonth('');
         }
@@ -76,7 +76,7 @@ const WeatherForm = ({ onFormSubmit }) => {
 <div className="form-row">
 
   <label for='month'>Select Month:</label>
-              <select  name='month' value={month} onChange={handleChangeMonth}>
+              <select  name='month' value={month.value} onChange={handleChangeMonth}>
                 {months.map((option) => (
                 <option 
                   key={option.value} 
@@ -95,7 +95,7 @@ const WeatherForm = ({ onFormSubmit }) => {
 
           <div className="form-row">
           <label for='location'>Location:</label>
-              <input className="form-input" name='location' type="text" placeholder="London, UK" value={location} onChange={(e) => setLocation(e.target.value)} />
+              <input className="form-input" name='location' type="text" placeholder="Town, postcode, city" value={location} onChange={(e) => setLocation(e.target.value)} />
           </div>
 
 
