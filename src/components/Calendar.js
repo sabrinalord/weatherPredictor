@@ -41,26 +41,12 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location}) =
           <p>Average Temperature: {averageTemperature}°C</p>
 
           {frequencyOfRainAsPercentage > 60 ? 
-          <span className="card-emoji">🌧‍</span> 
+          <span className="card-emoji">☔</span> 
           : frequencyOfRainAsPercentage > 49 ? 
-          <span className="card-emoji">😬</span> 
-          : <span className="card-emoji">👍</span>
+          <span className="card-emoji">☂️</span> 
+          : <span className="card-emoji">☀️</span>
         }
           <p>It rained {frequencyOfRain} times in the last {weatherDataRangeInYears} years.</p>
-
-        { 
-        frequencyOfWeatherCodeAsPercentage > 49 ?
-        <div className="weather-details">
-          <span>{weatherDescription.description} {frequencyOfWeatherCodeAsPercentage}% of the time</span> 
-          <span className="small-emoji">{weatherDescription.image}</span>
-
-         </div>
-         :
-         <div className="weather-details">
-         <span>Mixed weather conditions </span>
-         <span className="small-emoji">🤷🏻‍♀️</span>
-         </div>
-          }
 
         </div>
       )}

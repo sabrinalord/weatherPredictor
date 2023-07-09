@@ -42,7 +42,7 @@ function App() {
       
       <div className="site-header">
       <h1>Weather Predictor</h1>
-        <p>Predict the weather based on the last {weatherDataRangeInYears} years of weather data</p>
+      <h4>Predict the weather based on the last {weatherDataRangeInYears} years of weather data</h4>
 
         <WeatherForm onFormSubmit={handleFormSubmit} />
       </div>

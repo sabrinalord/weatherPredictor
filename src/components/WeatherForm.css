@@ -47,8 +47,8 @@
     padding: 12px;
     font-size: 16px;
     font-weight: bold;
-    color: #fff;
-    background-color: #6c63ff;
+    color: #000000;
+    background-color: #f5f5f5;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -59,7 +59,6 @@
     display: flex;
     display: inline-block;
     padding: 3px;
-    background:white;
   }
   
   .button-container button {
@@ -67,10 +66,11 @@
   }
   
   .form-button:hover {
-    background-color: #524bea;
+    background-color: #cecdcd;
+    color:black;
   }
   
   .form-button:active {
-    background-color: #392fbd;
+    background-color: #696969;
   }
   
