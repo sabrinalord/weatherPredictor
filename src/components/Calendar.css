@@ -1,22 +1,38 @@
+.calendar{
+    margin-top:2em;
+    text-align:center;
+    padding:2em;
+    max-width: 80%;
+    background-color: #ffffffd1;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px #c4cad3, -7px -7px px #f3f6fa;
+    
+}
+
+.calendar-header{
+    padding:1em;
+}
+
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* Create 7 equal-sized columns */
-    gap: 8px;
     font-size: 14px;
     max-width:1000px;
 }
-.calendar-grid-header {
+.calendar-grid-days {
     text-align: center;
     font-weight: bold;
+    color:rgb(103, 103, 103);
+    margin-bottom:10px;
 }
 
 .calendar-grid-square {
     padding:5px;
-    border: 1px solid black;
+    border: 1px solid rgb(255, 255, 255);
     text-align:center;
   }
 
-  .card-header{
+  .weekday{
     border-bottom: 1px solid black;
     padding-top: 2px;
     padding-bottom: 2px
@@ -24,7 +40,7 @@
   }
 
   .card-emoji{
-    font-size:50px;
+    font-size:40px;
   }
 
   .small-emoji{

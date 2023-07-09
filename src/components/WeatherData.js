@@ -21,7 +21,6 @@ const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeI
         
     useEffect(() => {
         const fetchWeatherData = async () => {
-          console.log(`fetching weatherData with month.value as: ${month.value}`)
           try {
             const startDate = `${startYear}-${month.value}-01`;
             const endDate = getCurrentDate();
@@ -146,7 +145,6 @@ const calculateAverages = (sortedData) => {
       useEffect(() => {
         if(Object.keys(weatherData).length > 0) {
           const sortedData = reorganiseWeatherData(weatherData, month.value)
-          console.log(`here is the sortedData ${JSON.stringify(sortedData)}`)
           const calculatedAverages = calculateAverages(sortedData)
 
          setAverages(calculatedAverages)

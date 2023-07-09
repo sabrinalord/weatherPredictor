@@ -5,7 +5,7 @@ import weatherCodes from '../weatherCodes.json';
 
 
 
-const Calendar = ( {month, year, averages, weatherDataRangeInYears}) => {
+const Calendar = ( {month, year, averages, weatherDataRangeInYears, location}) => {
   const getDaysInMonth = (year, month) => {
     return new Date(year, month, 0).getDate();
   };
@@ -35,7 +35,7 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears}) => {
   
     return (
       <div key={day} className="calendar-grid-square">
-      <div className="card-header">{day}</div> 
+      <span className="card-header">{day}</span>
       {dayData && (
         <div>
           <p>Average Temperature: {averageTemperature}°C</p>
@@ -71,17 +71,19 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears}) => {
 
 
     return (
-      <div>
-      <h3>{month.name}</h3>
+      <div className="calendar">
+        <div className="calendar-header">
+        <h1>{month.name}, {year} </h1>
+        <h3>in {location}</h3>
+        </div>
       <div className="calendar-grid">
-        <div className="calendar-grid-header">Sun</div>
-        <div className="calendar-grid-header">Mon</div>
-        <div className="calendar-grid-header">Tue</div>
-        <div className="calendar-grid-header">Wed</div>
-        <div className="calendar-grid-header">Thu</div>
-        <div className="calendar-grid-header">Fri</div>
-        <div className="calendar-grid-header">Sat</div>
-
+        <div className="calendar-grid-days">Sun</div>
+        <div className="calendar-grid-days">Mon</div>
+        <div className="calendar-grid-days">Tue</div>
+        <div className="calendar-grid-days">Wed</div>
+        <div className="calendar-grid-days">Thu</div>
+        <div className="calendar-grid-days">Fri</div>
+        <div className="calendar-grid-days">Sat</div>
         {blankSquares}
         {daysArray.map((day) => renderDaySquare(day))} 
     </div>

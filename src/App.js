@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
   const [selectedMonth, setSelectedMonth] = useState({ value: '00', name: '' });
-  const [selectedLocation, setSelectedLocation] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState({});
   const [selectedYear, setSelectedYear] = useState('');
   const [selectedLatitude, setSelectedLatitude] = useState(null);
   const [selectedLongitude, setSelectedLongitude] = useState(null);
@@ -37,10 +37,13 @@ function App() {
   return (
     <div className="App">
 
+
+     
       
-      <div className="form-wrapper">
-        <h1>Weather Predictor</h1>
+      <div className="site-header">
+      <h1>Weather Predictor</h1>
         <p>Predict the weather based on the last {weatherDataRangeInYears} years of weather data</p>
+
         <WeatherForm onFormSubmit={handleFormSubmit} />
       </div>
      
@@ -62,6 +65,7 @@ function App() {
             year={selectedYear}
             averages={averagesForSelectedMonth}
             weatherDataRangeInYears ={weatherDataRangeInYears}
+            location={selectedLocation}
             />
           </div>
         )

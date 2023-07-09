@@ -1,17 +1,26 @@
 
 body{
   margin:0;
+  background-image: url('../public/clouds-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(77, 77, 255, 0.608);
+  background-blend-mode: overlay;
 }
-.form-wrapper{
-  background: rgb(101, 101, 255);
+
+.site-header{
+  margin-top:5em;
   display:flex;
   flex-direction: column;
-  align-items:center
+  align-items:center;
+  color:White;
 }
 
 .calendar-wrapper{
   display:flex;
   flex-direction: column;
   align-items:center;
-  padding:2em;
+  justify-content: center;
+  
 }
+
