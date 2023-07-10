@@ -43,15 +43,19 @@
   }
   
   .form-button {
-    width: 100%;
-    padding: 12px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FF69B4;
+    color: #FFF;
+    font-family: Arial, sans-serif;
     font-size: 16px;
     font-weight: bold;
-    color: #000000;
-    background-color: #f5f5f5;
+    text-decoration: none;
+    border-radius: 30px;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(255, 105, 180, 0.3);
+    transition: all 0.3s ease;
+    cursor:pointer
   }
   
   .button-container {
@@ -61,16 +65,13 @@
     padding: 3px;
   }
   
-  .button-container button {
-    margin-top: auto;
-  }
   
   .form-button:hover {
-    background-color: #cecdcd;
-    color:black;
+    background-color: #FFC0CB;
+    box-shadow: 0 6px 8px rgba(255, 105, 180, 0.5);
   }
-  
+
   .form-button:active {
-    background-color: #696969;
+    background-color: #cc959e;
+    box-shadow: 0 6px 8px rgba(255, 105, 180, 0.5);
   }
-  

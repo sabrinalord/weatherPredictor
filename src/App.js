@@ -11,6 +11,7 @@ function App() {
   const [selectedLatitude, setSelectedLatitude] = useState(null);
   const [selectedLongitude, setSelectedLongitude] = useState(null);
   const [averagesForSelectedMonth, setAveragesForSelectedMonth] = useState({});
+  const [weatherDataByYear, setweatherDataByYear]  = useState({});
 
   const weatherDataRangeInYears = 10
 
@@ -24,8 +25,9 @@ function App() {
     };
 
 
-  const updateAverages = (averages) =>{
+  const updateData= (averages, sortedData) =>{
     setAveragesForSelectedMonth(averages)
+    setweatherDataByYear(sortedData)
   }
 
 
@@ -38,8 +40,6 @@ function App() {
     <div className="App">
 
 
-     
-      
       <div className="site-header">
       <h1>Weather Predictor</h1>
       <h4>Predict the weather based on the last {weatherDataRangeInYears} years of weather data</h4>
@@ -52,9 +52,9 @@ function App() {
         month={selectedMonth}
         latitude={selectedLatitude}
         longitude={selectedLongitude} 
-        onDataFetch={updateAverages}
+        onDataFetch={updateData}
         year={selectedYear}
-        weatherDataRangeInYears = {weatherDataRangeInYears}
+        weatherDataRangeInYears={weatherDataRangeInYears}
         />
 
         {selectedMonth && selectedLocation && selectedYear 
@@ -64,8 +64,9 @@ function App() {
             month={selectedMonth}
             year={selectedYear}
             averages={averagesForSelectedMonth}
-            weatherDataRangeInYears ={weatherDataRangeInYears}
+            weatherDataRangeInYears={weatherDataRangeInYears}
             location={selectedLocation}
+            weatherDataByYear={weatherDataByYear}
             />
           </div>
         )

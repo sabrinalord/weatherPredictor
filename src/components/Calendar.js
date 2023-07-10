@@ -1,14 +1,13 @@
 import React, { useState, useEffect }  from 'react';
 import './Calendar.css';
-import weatherCodes from '../weatherCodes.json';
+import DayDetails from './DayDetails';
 
 
-
-
-const Calendar = ( {month, year, averages, weatherDataRangeInYears, location}) => {
+const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, weatherDataByYear}) => {
   const getDaysInMonth = (year, month) => {
     return new Date(year, month, 0).getDate();
   };
+  const [selectedDay, setSelectedDay] = useState("");
 
   const parsedMonth = new Date(`${month.value} 1, ${year}`).getMonth() + 1; 
   const parsedYear = parseInt(year, 10); 
@@ -17,39 +16,54 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location}) =
   const blankSquares = Array.from({ length: firstDayOfWeek }, (_, index) => (
     <div 
     key={`blank-${index}`} 
-    className="calendar-grid-square blank-square">
+    className=" blank-square">
     </div>
   ));
-
   const daysArray = Array.from({ length: daysInMonth }, (_, index) => index + 1 );
+
+  const [isModalOpen, setModalOpen] = useState(false);
+
+
+const openModal = () => {
+  setModalOpen(true);
+};
+
+
+  const handleDayClick = (day) => {
+    console.log(`this  is the day inside Calendar ${day}`)
+    openModal();
+    setSelectedDay(day.toString().padStart(2, '0'));
+    console.log(selectedDay)
+
+    // Implement your logic to open WeatherDetails and pass the necessary props
+  };
+
 
   const renderDaySquare = (day) => {
     const dayData = averages[day - 1];
-    const { averageTemperature, averageRainSum, averagePrecipitationHours, modeWeathercode, frequencyOfWeathercode, frequencyOfRain } =
+    const { averageTemperature, frequencyOfRain } =
       dayData || {};
 
-     const frequencyOfWeatherCodeAsPercentage = Math.ceil((frequencyOfWeathercode / weatherDataRangeInYears) * 100);
      const frequencyOfRainAsPercentage = Math.ceil((frequencyOfRain / weatherDataRangeInYears) * 100);
 
-     const weatherDescription = weatherCodes[modeWeathercode]
   
     return (
-      <div key={day} className="calendar-grid-square">
-      <span className="card-header">{day}</span>
-      {dayData && (
-        <div>
-          <p>Average Temperature: {averageTemperature}°C</p>
+      <div key={day} className="calendar-grid-square" onClick={() => handleDayClick(day)}>
+        <div className="date-underline"><span className="card-header">{day}</span></div>
+        {dayData && (
+          <div>
+            <p>Average Temp: {averageTemperature}°C</p>
 
-          {frequencyOfRainAsPercentage > 60 ? 
-          <span className="card-emoji">☔</span> 
-          : frequencyOfRainAsPercentage > 49 ? 
-          <span className="card-emoji">☂️</span> 
-          : <span className="card-emoji">☀️</span>
-        }
-          <p>It rained {frequencyOfRain} times in the last {weatherDataRangeInYears} years.</p>
+            {frequencyOfRainAsPercentage > 60 ? 
+            <span className="card-emoji">☔</span> 
+            : frequencyOfRainAsPercentage > 49 ? 
+            <span className="card-emoji">☂️</span> 
+            : <span className="card-emoji">☀️</span>
+          }
+            <p>Rained {frequencyOfRain} times in the last {weatherDataRangeInYears} years.</p>
 
-        </div>
-      )}
+          </div>
+        )}
     </div>
     );
   };
@@ -72,6 +86,15 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location}) =
         <div className="calendar-grid-days">Sat</div>
         {blankSquares}
         {daysArray.map((day) => renderDaySquare(day))} 
+        {isModalOpen && (
+          <DayDetails
+            day={selectedDay}
+            month={month}
+            weatherDataRangeInYears={weatherDataRangeInYears}
+            weatherDataByYear={weatherDataByYear}
+            onCloseModal={() => setModalOpen(false)}
+          />
+        )}
     </div>
     </div>
     );

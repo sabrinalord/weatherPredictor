@@ -1,15 +1,42 @@
 
+
 body{
   margin:0;
-  background-image: url('../public/clouds-bg.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-color: rgba(77, 77, 255, 0.608);
   background-blend-mode: overlay;
 }
 
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 780px) {
+  body {
+    background-image: url('../public/clouds-bg-mob.png');
+  }
+}
+
+@media (min-width: 781px) {
+  body {
+    background-image: url('../public/clouds-bg-tablet.png');
+  }
+}
+
+@media (min-width: 1500px) {
+  body {
+    background-image: url('../public/clouds-bg.png');
+  }
+  .site-header{
+    max-width:800px
+  }
+}
+
 .site-header{
-  margin-top:20vh;
+  margin: 5em 2em;
   display:flex;
   flex-direction: column;
   align-items:center;
