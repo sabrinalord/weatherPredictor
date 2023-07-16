@@ -9,8 +9,6 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 
 const DayDetails = ({ weatherDataRangeInYears, weatherDataByYear, onCloseModal, day, month, location }) => {
-    console.log(`here is weatherDataByYear in DayDetails: ${JSON.stringify(weatherDataByYear)}`);
-  
     const renderDaySquare = (selectedDay, selectedMonth, weatherDataByYear) => {
       const selectedData = weatherDataByYear.find(
         (data) => data.date === selectedDay && data.month === selectedMonth.value

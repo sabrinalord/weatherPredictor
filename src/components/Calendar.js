@@ -30,12 +30,8 @@ const openModal = () => {
 
 
   const handleDayClick = (day) => {
-    console.log(`this  is the day inside Calendar ${day}`)
     openModal();
     setSelectedDay(day.toString().padStart(2, '0'));
-    console.log(selectedDay)
-
-    // Implement your logic to open WeatherDetails and pass the necessary props
   };
 
 

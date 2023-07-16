@@ -14,10 +14,8 @@ const WeatherForm = ({ onFormSubmit }) => {
     const handleSubmit = async (event) => {
       event.preventDefault();
       const {latitude , longitude} =  await getLocationCoordinates(location);
-      console.log('handling the submit')
       setLatitude(latitude);
       setLongitude(longitude);
-      console.log(`inside handleSubmit lat: ${latitude} and long: ${longitude}`)
       if (latitude && longitude) {
         onFormSubmit(month, year, latitude, longitude, location);
       }
@@ -26,12 +24,9 @@ const WeatherForm = ({ onFormSubmit }) => {
 
     const getLocationCoordinates = async (inputLocation) => {
       try {
-        console.log('getting coordinates')
         const url = `http://localhost:8000/coordinates?location=${encodeURIComponent(inputLocation)}`;
         const response = await axios.get(url);
         const { latitude , longitude } = response.data;
-        console.log(`inside weatherForm retrieved ${latitude} and ${longitude}`)
-
 
         return { latitude , longitude };
       } catch (error) {

@@ -28,10 +28,8 @@ const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeI
               const startDate = `${startYear}-${month.value}-01`;
               const endDate = getCurrentDate();
               const endpoint = `https://archive-api.open-meteo.com/v1/archive?latitude=${latitude}&longitude=${longitude}&start_date=${startDate}&end_date=${endDate}&daily=weathercode,temperature_2m_max,precipitation_hours,rain_sum&timezone=Europe%2FLondon`;
-              console.log(endpoint)
               const response = await axios.get(endpoint);
               setWeatherData(response.data.daily);
-              console.log(`weatherData is ${JSON.stringify(weatherData)}`)
               setError(null);
             }
           } catch (error) {
