@@ -11,7 +11,6 @@ app.use(cors());
 
 app.get("/coordinates", async (req, res) => {
   const { location } = req.query;
-  console.log(location)
 
 
   const options = {
