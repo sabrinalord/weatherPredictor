@@ -58,7 +58,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor:pointer;
   }
+
+  .calendar-grid-square:hover{
+    background-color:rgba(123, 136, 252, 0.318);
+}
 
   .weekday{
     border-bottom: 1px solid black;
@@ -86,6 +91,15 @@
     text-align: left;
     padding: 2px;
     font-size:14px;
+  }
+
+  .overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(8, 0, 45, 0.892); 
   }
 
  

@@ -1,2 +1,67 @@
 
+.day-details{
+    position:absolute;
+    background:rgb(29, 108, 235);
+    z-index:2;
+    color:white;
+}
 
+.day-details-header{
+    display:flex;
+    background:rgb(13, 80, 188);
+    border-bottom: 1px solid white;
+    padding: 10px;
+
+}
+
+.day-details-header h1{
+    width:95%;
+    font-size:2em;
+}
+
+
+
+.close-btn .svg-inline--fa{
+    height:2em;
+    cursor:pointer;
+}
+
+.day-details {
+    position: absolute;
+    background: rgb(29, 108, 235);
+    z-index: 2;
+    color: white;
+    font-size:15px;
+  }
+
+  
+  .details-row {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Horizontally align items */
+    border-bottom: 1px solid white;
+    padding: 10px 15px;
+    text-align: left;
+  }
+
+  .day-details p {
+margin:10px;
+max-width: 250px;
+min-width: 80px;
+  }
+  .details-date {
+    font-size: 1.5em;
+    font-weight: 800;
+  }
+  
+  
+  .weather-icon {
+    font-size: 2em;
+    margin: 50px; /* Adjust the margin to control horizontal spacing */
+  }
+  
+.temperature{
+    font-size:1.5em;
+}
+ 
+ 

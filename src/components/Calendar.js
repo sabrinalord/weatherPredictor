@@ -90,11 +90,14 @@ const openModal = () => {
           <DayDetails
             day={selectedDay}
             month={month}
+            location={location}
             weatherDataRangeInYears={weatherDataRangeInYears}
             weatherDataByYear={weatherDataByYear}
             onCloseModal={() => setModalOpen(false)}
           />
         )}
+        {isModalOpen && <div className="overlay" />}
+
     </div>
     </div>
     );
