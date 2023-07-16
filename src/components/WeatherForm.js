@@ -24,7 +24,7 @@ const WeatherForm = ({ onFormSubmit }) => {
 
     const getLocationCoordinates = async (inputLocation) => {
       try {
-        const url = `http://localhost:8000/coordinates?location=${encodeURIComponent(inputLocation)}`;
+        const url = `https://weather-predictor-backend.onrender.com/coordinates?location=${encodeURIComponent(inputLocation)}`;
         const response = await axios.get(url);
         const { latitude , longitude } = response.data;
 
