@@ -39,14 +39,7 @@ Contributions to weatherPredictor are welcome! If you want to contribute to the 
 4. Commit and push your changes to your forked repository
 5. Submit a pull request
 
-## Known Issues
-
-There are currently no known issues or bugs in the app. If you encounter any problems, please let us know by opening an issue.
-
-## Support
-
-If you need any assistance or have any questions, feel free to reach out to the project maintainers or open an issue on the repository.
 
 ## Additional Resources
 
-- Documentation for the openmeteo weather API: [link-to-api-docs](https://api-docs.openmeteo.org/)
+- Documentation for the open-meteo weather API: [link-to-api-docs](https://open-meteo.com/en/docs)
