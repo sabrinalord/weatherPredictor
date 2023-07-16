@@ -1,6 +1,6 @@
 # weatherPredictor
 
-The weatherPredictor app utilizes historical weather data from the openmeteo weather API to predict the weather. It leverages the average weather data from the last 10 years to make accurate weather predictions.
+The weatherPredictor app utilizes historical weather data from the openmeteo weather API to predict the weather. It uses average weather data from the last 10 years to make weather predictions.
 
 ## Features
 
