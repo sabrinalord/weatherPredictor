@@ -32,7 +32,7 @@
       }
   }
 
-  /* Tablet styling */
+  /* Dekstop */
 @media (min-width: 1300px) {
     .calendar-grid {
       max-width: 100%;

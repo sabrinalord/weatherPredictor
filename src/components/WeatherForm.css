@@ -11,6 +11,10 @@
       flex-direction: row;
     }
   }
+
+  .select{
+    width:100%;
+  }
   
   .select:focus {
     outline: none;
@@ -75,3 +79,5 @@
     background-color: #cc959e;
     box-shadow: 0 6px 8px rgba(255, 105, 180, 0.5);
   }
+
+  

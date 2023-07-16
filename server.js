@@ -32,8 +32,6 @@ app.get("/coordinates", async (req, res) => {
 
     const latitude = response.data.results[0].geometry.lat;
     const longitude = response.data.results[0].geometry.lng;
-    console.log('inside index.js latitude:', latitude);
-    console.log('inside index.js longitude:', longitude);
     res.json({ latitude , longitude }); 
 
   } catch (error) {
@@ -42,4 +40,4 @@ app.get("/coordinates", async (req, res) => {
 });
 
 
-app.listen(8000, () => console.log(`Server is running on port ${PORT}`))
+app.listen(8000, () => console.log(`Server is running`))

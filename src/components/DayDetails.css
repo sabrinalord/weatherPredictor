@@ -4,6 +4,8 @@
     background:rgb(29, 108, 235);
     z-index:2;
     color:white;
+    max-width:90%;
+    top: 5em;
 }
 
 .day-details-header{
@@ -16,24 +18,14 @@
 
 .day-details-header h1{
     width:95%;
-    font-size:2em;
+    font-size:16px;
 }
-
 
 
 .close-btn .svg-inline--fa{
     height:2em;
     cursor:pointer;
 }
-
-.day-details {
-    position: absolute;
-    background: rgb(29, 108, 235);
-    z-index: 2;
-    color: white;
-    font-size:15px;
-  }
-
   
   .details-row {
     display: flex;
@@ -47,8 +39,8 @@
   .day-details p {
 margin:10px;
 max-width: 250px;
-min-width: 80px;
   }
+
   .details-date {
     font-size: 1.5em;
     font-weight: 800;
