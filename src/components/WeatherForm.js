@@ -71,7 +71,7 @@ const WeatherForm = ({ onFormSubmit }) => {
 
 <div className="form-row">
 
-  <label for='month'>Select Month:</label>
+  <label htmlFor='month'>Select Month:</label>
               <select  name='month' value={month.value} onChange={handleChangeMonth}>
                 {months.map((option) => (
                 <option 
@@ -85,12 +85,12 @@ const WeatherForm = ({ onFormSubmit }) => {
 
 
           <div className="form-row">
-          <label for='year'>Year:</label>
+          <label htmlFor='year'>Year:</label>
               <input className="form-input" name='year' type="text" value={year} onChange={(e) => setYear(e.target.value)} />
           </div>
 
           <div className="form-row">
-          <label for='location'>Location:</label>
+          <label htmlFor='location'>Location:</label>
               <input className="form-input" name='location' type="text" placeholder="Town, postcode, city" value={location} onChange={(e) => setLocation(e.target.value)} />
           </div>
 
