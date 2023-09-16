@@ -1,10 +1,11 @@
-const PORT = 8000
 const express = require('express')
 const cors = require('cors')
 const axios = require('axios')
 require('dotenv').config()
 
 const app = express()
+const port = process.env.PORT
+
 
 app.use(cors());
 
@@ -38,8 +39,6 @@ app.get("/coordinates", async (req, res) => {
     console.error(error);
   }
 });
-
-const port = process.env.REACT_APP_BACKEND_URL || 8000
 
 
 app.listen(port, () => {
