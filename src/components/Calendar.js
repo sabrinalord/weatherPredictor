@@ -16,7 +16,10 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
     try{    
       console.log('getting days of the month')
       const daysInMonth = new Date(year, month, 0).getDate();
-      return Array.from({ length: daysInMonth }, (_, index) => index + 1);
+      const array = Array.from({ length: daysInMonth }, (_, index) => index + 1);
+      console.log('Days retrieved:', array); 
+      
+      return array;
     } catch (error) {
       console.error('error getting days of month:', error)
     }
@@ -27,7 +30,7 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
 
   const renderDaySquare = (day) => {
     try {
-      console.log('rendering squares')
+      console.log('Rendering day:', day);
       const dayData = averages[day - 1];
       const { averageTemperature, frequencyOfRain } =
         dayData || {};
