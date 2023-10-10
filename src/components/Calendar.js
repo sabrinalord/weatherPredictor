@@ -4,43 +4,27 @@ import DayDetails from './DayDetails';
 
 
 const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, weatherDataByYear}) => {
-  const getDaysInMonth = (year, month) => {
-    try{
-      console.log('calculating days')
-      return new Date(year, month, 0).getDate();
-    } catch(error) {
-      console.error("An error occurred while calculating days in month:", error);
-      return 0;
-    }
-  };
   const [selectedDay, setSelectedDay] = useState("");
-
   const parsedMonth = new Date(`${month.value} 1, ${year}`).getMonth() + 1; 
   const parsedYear = parseInt(year, 10);
 
-  const daysInMonth = getDaysInMonth(parsedYear, parsedMonth);
   const firstDayOfWeek = new Date(parsedYear, parsedMonth - 1, 1).getDay() || 7;
-  const blankSquares = Array.from({ length: firstDayOfWeek }, (_, index) => (
+  const blankSquares = Array.from({ length: firstDayOfWeek }, (_, index) => 
+  (
     <div 
     key={`blank-${index}`} 
     className=" blank-square">
     </div>
   ));
-  const daysArray = Array.from({ length: daysInMonth }, (_, index) => index + 1 );
+
+  const getDaysArrayForMonth = (year, month) => {
+    const daysInMonth = new Date(year, month, 0).getDate();
+    return Array.from({ length: daysInMonth }, (_, index) => index + 1);
+  };
+  
+  const daysArray = getDaysArrayForMonth(parsedYear, parsedMonth);
 
   const [isModalOpen, setModalOpen] = useState(false);
-
-
-const openModal = () => {
-  setModalOpen(true);
-};
-
-
-  const handleDayClick = (day) => {
-    openModal();
-    setSelectedDay(day.toString().padStart(2, '0'));
-  };
-
 
   const renderDaySquare = (day) => {
     try {
@@ -79,6 +63,17 @@ const openModal = () => {
       );
     }
   };
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  
+  
+    const handleDayClick = (day) => {
+      openModal();
+      setSelectedDay(day.toString().padStart(2, '0'));
+    };
+
 
     return (
       <div className="calendar">
