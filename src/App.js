@@ -66,15 +66,20 @@ function App() {
         weatherDataRangeInYears={weatherDataRangeInYears}
         />
 
-        <Calendar 
-          month={selectedMonth}
-          year={selectedYear}
-          averages={averagesForSelectedMonth}
-          weatherDataRangeInYears={weatherDataRangeInYears}
-          location={selectedLocation}
-          weatherDataByYear={weatherDataByYear}
-          />
-
+        {selectedMonth && selectedLocation && selectedYear 
+        && (
+          <div className="calendar-wrapper">
+            <Calendar 
+            month={selectedMonth}
+            year={selectedYear}
+            averages={averagesForSelectedMonth}
+            weatherDataRangeInYears={weatherDataRangeInYears}
+            location={selectedLocation}
+            weatherDataByYear={weatherDataByYear}
+            />
+          </div>
+        )
+        }
         
     </div>
   );
