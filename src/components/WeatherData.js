@@ -49,7 +49,7 @@ const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeI
 
 
       const reorganiseWeatherData = (weatherData, month) => {
-        console.log('organising weather data')
+      try{
         const { time, weathercode, temperature_2m_max, precipitation_hours, rain_sum } = weatherData;
         const sortedData = time.reduce((result, date, i) => {
           const dataYear = date.substring(0, 4);
@@ -79,8 +79,11 @@ const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeI
       
           return result;
         }, []);
-      
+        console.log('Successfully organised weather data')
         return sortedData;
+      } catch (error){
+        console.log('Error whilst organising weather data:', error)
+      }
       };
       
 
