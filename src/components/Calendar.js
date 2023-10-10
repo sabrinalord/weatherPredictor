@@ -32,7 +32,7 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
       const { averageTemperature, frequencyOfRain } =
         dayData || {};
        const frequencyOfRainAsPercentage = Math.ceil((frequencyOfRain / weatherDataRangeInYears) * 100);
-       console.log(`data for each day displaying as ${dayData}`)
+       console.log(`Data for day ${day}:`, JSON.stringify(dayData, null, 2));
 
       return (
         <div key={day} className="calendar-grid-square" onClick={() => handleDayClick(day)}>
@@ -54,7 +54,7 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
       </div>
       );
     } catch (error) {
-      console.error('Error in rendering calendar:', error);
+      console.error(`Error in rendering calendar for day ${day}:`, error);
       return (
         <div key={day} className="calendar-grid-square error">
           <div className="date-underline"><span className="card-header">{day}</span></div>
@@ -74,6 +74,10 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
       setSelectedDay(day.toString().padStart(2, '0'));
     };
 
+    useEffect(() => {
+      console.log("Calendar component is mounted.");
+    }, []);
+  
 
     return (
       <div className="calendar">
