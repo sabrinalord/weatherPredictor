@@ -5,12 +5,19 @@ import DayDetails from './DayDetails';
 
 const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, weatherDataByYear}) => {
   const getDaysInMonth = (year, month) => {
-    return new Date(year, month, 0).getDate();
+    try{
+      console.log('calculating days')
+      return new Date(year, month, 0).getDate();
+    } catch(error) {
+      console.error("An error occurred while calculating days in month:", error);
+      return 0;
+    }
   };
   const [selectedDay, setSelectedDay] = useState("");
 
   const parsedMonth = new Date(`${month.value} 1, ${year}`).getMonth() + 1; 
-  const parsedYear = parseInt(year, 10); 
+  const parsedYear = parseInt(year, 10);
+
   const daysInMonth = getDaysInMonth(parsedYear, parsedMonth);
   const firstDayOfWeek = new Date(parsedYear, parsedMonth - 1, 1).getDay() || 7;
   const blankSquares = Array.from({ length: firstDayOfWeek }, (_, index) => (
