@@ -15,9 +15,9 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
   const getDaysArrayForMonth = (year, month) => {
     try{    
       console.log('getting days of the month')
-      const daysInMonth = new Date(year, month, 0).getDate();
+      const daysInMonth = 30;
       const array = Array.from({ length: daysInMonth }, (_, index) => index + 1);
-      console.log('Days in month:', daysInMonth); 
+      console.log('Days retrieved:', array); 
       console.log('Days retrieved:', array); 
       
       return array;
