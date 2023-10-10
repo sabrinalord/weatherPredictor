@@ -26,13 +26,10 @@ function App() {
 
 
   const updateData= (averages, sortedData) =>{
-    try {
-      console.log('Updating data...');
-      
+    try {      
       setAveragesForSelectedMonth(averages);
       setweatherDataByYear(sortedData);
-  
-      console.log('Data updated successfully.');
+      console.log('weather data updated successfully.');
     } catch (error) {
       console.error('Error updating data:', error);
     }

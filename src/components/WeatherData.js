@@ -48,6 +48,7 @@ const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeI
 
 
       const reorganiseWeatherData = (weatherData, month) => {
+        console.log('organising weather data')
         const { time, weathercode, temperature_2m_max, precipitation_hours, rain_sum } = weatherData;
         const sortedData = time.reduce((result, date, i) => {
           const dataYear = date.substring(0, 4);
@@ -116,38 +117,43 @@ const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeI
 
     
       const calculateAverages = (sortedData) => {
-        const averageTemperaturesPerDay = sortedData.map((item) => {
-          const meanTemp = item.temperature_2m_max.reduce(
-            (sum, temp) => sum + temp.value,
-            0
-          ) / item.temperature_2m_max.length;
-      
-          const meanRain = item.rain_sum.reduce(
-            (sum, rain) => sum + rain.value,
-            0
-          ) / item.rain_sum.length;
-      
-          const meanPrecipitationHours = item.precipitation_hours.reduce(
-            (sum, precipitation) => sum + precipitation.value,
-            0
-          ) / item.precipitation_hours.length;
-      
-          const mostFrequentWeatherCode = findMode(item.weathercode.map(code => code.value));
-          const frequencyOfWeathercode = countFrequency(item.weathercode.map(code => code.value), mostFrequentWeatherCode);
-          const frequencyOfRain = countFrequency(item.rain_sum.map(rain => rain.value), !0);
-         
-          return {
-            date: item.date,
-            averageTemperature: meanTemp.toFixed(2),
-            averageRainSum: meanRain.toFixed(2),
-            averagePrecipitationHours: meanPrecipitationHours.toFixed(2),
-            modeWeatherCode: mostFrequentWeatherCode,
-            frequencyOfWeathercode: frequencyOfWeathercode,
-            frequencyOfRain: frequencyOfRain
-          };
-        });
-      
-        return averageTemperaturesPerDay;
+        try{
+          const averageTemperaturesPerDay = sortedData.map((item) => {
+            const meanTemp = item.temperature_2m_max.reduce(
+              (sum, temp) => sum + temp.value,
+              0
+            ) / item.temperature_2m_max.length;
+        
+            const meanRain = item.rain_sum.reduce(
+              (sum, rain) => sum + rain.value,
+              0
+            ) / item.rain_sum.length;
+        
+            const meanPrecipitationHours = item.precipitation_hours.reduce(
+              (sum, precipitation) => sum + precipitation.value,
+              0
+            ) / item.precipitation_hours.length;
+        
+            const mostFrequentWeatherCode = findMode(item.weathercode.map(code => code.value));
+            const frequencyOfWeathercode = countFrequency(item.weathercode.map(code => code.value), mostFrequentWeatherCode);
+            const frequencyOfRain = countFrequency(item.rain_sum.map(rain => rain.value), !0);
+           
+            return {
+              date: item.date,
+              averageTemperature: meanTemp.toFixed(2),
+              averageRainSum: meanRain.toFixed(2),
+              averagePrecipitationHours: meanPrecipitationHours.toFixed(2),
+              modeWeatherCode: mostFrequentWeatherCode,
+              frequencyOfWeathercode: frequencyOfWeathercode,
+              frequencyOfRain: frequencyOfRain
+            };
+          });
+        
+          return averageTemperaturesPerDay;
+        } catch (error) {
+          console.error('Error in calculateAverages:', error);
+          return [];
+        }
       };
   
 
