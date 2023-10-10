@@ -25,6 +25,7 @@ const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeI
         const fetchWeatherData = async () => {
           try {
             if (latitude && longitude && month) {
+              console.log('we have values for lat long and month!')
               const startDate = `${startYear}-${month.value}-01`;
               const endDate = getCurrentDate();
               const endpoint = `https://archive-api.open-meteo.com/v1/archive?latitude=${latitude}&longitude=${longitude}&start_date=${startDate}&end_date=${endDate}&daily=weathercode,temperature_2m_max,precipitation_hours,rain_sum&timezone=Europe%2FLondon`;
