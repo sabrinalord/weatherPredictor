@@ -32,7 +32,7 @@ const WeatherData = ({month, latitude, longitude, onDataFetch, weatherDataRangeI
               const response = await axios.get(endpoint);
               
               setWeatherData(response.data.daily);
-              console.log('Weather data updated in state:', JSON.stringify(weatherData, null, 2));
+              console.log('Weather data updated in state:', weatherData);
             } else {
               console.log('Latitude, longitude, or month is missing. Skipping fetch.');
             }
