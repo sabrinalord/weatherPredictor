@@ -102,7 +102,11 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
         <div className="calendar-grid-days">Thu</div>
         <div className="calendar-grid-days">Fri</div>
         <div className="calendar-grid-days">Sat</div>
-        {blankSquares}
+        {blankSquares.map((blankSquare, index) => (
+    <React.Fragment key={`blank-${index}`}>
+      {blankSquare}
+    </React.Fragment>
+  ))}
         {daysArray.map((day) => renderDaySquare(day))} 
         {isModalOpen && (
           <DayDetails
