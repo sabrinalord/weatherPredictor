@@ -8,15 +8,20 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
   const parsedMonth = new Date(`${month.value} 1, ${year}`).getMonth() + 1; 
   const parsedYear = parseInt(year, 10);
 
-  const firstDayOfWeek = new Date(parsedYear, parsedMonth - 1, 1).getDay() || 7;
-  const blankSquares = Array.from({ length: firstDayOfWeek }, (_, index) => 
-  (
-    <div 
-    key={`blank-${index}`} 
-    className=" blank-square">
-    </div>
-  ));
+  let firstDayOfWeek, blankSquares;
 
+  try {
+    firstDayOfWeek = new Date(parsedYear, parsedMonth - 1, 1).getDay() || 7;
+    blankSquares = Array.from({ length: firstDayOfWeek }, (_, index) => (
+      <div
+        key={`blank-${index}`}
+        className=" blank-square"
+      ></div>
+    ));
+  } catch (error) {
+    console.error('Error calculating firstDayOfWeek or creating blankSquares:', error);
+  
+  }
   const getDaysArrayForMonth = (year, month) => {
     const daysInMonth = new Date(year, month, 0).getDate();
     return Array.from({ length: daysInMonth }, (_, index) => index + 1);
