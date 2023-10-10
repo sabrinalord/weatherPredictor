@@ -28,11 +28,11 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
 
   const renderDaySquare = (day) => {
     try {
+      console.log('rendering squares')
       const dayData = averages[day - 1];
       const { averageTemperature, frequencyOfRain } =
         dayData || {};
        const frequencyOfRainAsPercentage = Math.ceil((frequencyOfRain / weatherDataRangeInYears) * 100);
-       console.log(`Data for day ${day}:`, JSON.stringify(dayData, null, 2));
 
       return (
         <div key={day} className="calendar-grid-square" onClick={() => handleDayClick(day)}>
@@ -77,6 +77,10 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
     useEffect(() => {
       console.log("Calendar component is mounted.");
     }, []);
+
+    useEffect(() => {
+      console.log("Averages have changed. Re-rendering Calendar component.");
+    }, [averages]);
   
 
     return (
