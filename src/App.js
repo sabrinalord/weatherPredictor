@@ -43,6 +43,7 @@ function App() {
       <div className="site-header">
       <h1>Weather Predictor</h1>
       <h4>Predict the weather based on the last {weatherDataRangeInYears} years of weather data</h4>
+      <p>This site is deployed with <a href="www.render.com">Render</a> and will spin down due to in-activity. If you don't see results below, please wait 30seconds and try again. </p>
 
         <WeatherForm onFormSubmit={handleFormSubmit} />
       </div>
