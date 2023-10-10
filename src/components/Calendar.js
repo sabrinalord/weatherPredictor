@@ -7,21 +7,11 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
   const [selectedDay, setSelectedDay] = useState("");
   const parsedMonth = new Date(`${month.value} 1, ${year}`).getMonth() + 1; 
   const parsedYear = parseInt(year, 10);
-
-  let firstDayOfWeek, blankSquares;
-
-  try {
-    firstDayOfWeek = new Date(parsedYear, parsedMonth - 1, 1).getDay() || 7;
-    blankSquares = Array.from({ length: firstDayOfWeek }, (_, index) => (
-      <div
-        key={`blank-${index}`}
-        className=" blank-square"
-      ></div>
-    ));
-  } catch (error) {
-    console.error('Error calculating firstDayOfWeek or creating blankSquares:', error);
+  const firstDayOfWeek = new Date(parsedYear, parsedMonth - 1, 1).getDay() || 7;
+  const blankSquares = Array.from({ length: firstDayOfWeek }).map((_, index) => (
+<div key={`blank-${index}`} className="blank-square"></div>
+));
   
-  }
   const getDaysArrayForMonth = (year, month) => {
     const daysInMonth = new Date(year, month, 0).getDate();
     return Array.from({ length: daysInMonth }, (_, index) => index + 1);
@@ -102,11 +92,7 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
         <div className="calendar-grid-days">Thu</div>
         <div className="calendar-grid-days">Fri</div>
         <div className="calendar-grid-days">Sat</div>
-        {blankSquares.map((blankSquare, index) => (
-    <React.Fragment key={`blank-${index}`}>
-      {blankSquare}
-    </React.Fragment>
-  ))}
+        {blankSquares}
         {daysArray.map((day) => renderDaySquare(day))} 
         {isModalOpen && (
           <DayDetails
