@@ -36,35 +36,42 @@ const openModal = () => {
 
 
   const renderDaySquare = (day) => {
-    const dayData = averages[day - 1];
-    const { averageTemperature, frequencyOfRain } =
-      dayData || {};
-
-     const frequencyOfRainAsPercentage = Math.ceil((frequencyOfRain / weatherDataRangeInYears) * 100);
-
+    try {
+      const dayData = averages[day - 1];
+      const { averageTemperature, frequencyOfRain } =
+        dayData || {};
   
-    return (
-      <div key={day} className="calendar-grid-square" onClick={() => handleDayClick(day)}>
-        <div className="date-underline"><span className="card-header">{day}</span></div>
-        {dayData && (
-          <div>
-            <p>Average Temp: {averageTemperature}°C</p>
-
-            {frequencyOfRainAsPercentage > 60 ? 
-            <span className="card-emoji">☔</span> 
-            : frequencyOfRainAsPercentage > 49 ? 
-            <span className="card-emoji">☂️</span> 
-            : <span className="card-emoji">☀️</span>
-          }
-            <p>Rained {frequencyOfRain} times in the last {weatherDataRangeInYears} years.</p>
-
-          </div>
-        )}
-    </div>
-    );
+       const frequencyOfRainAsPercentage = Math.ceil((frequencyOfRain / weatherDataRangeInYears) * 100);
+  
+      return (
+        <div key={day} className="calendar-grid-square" onClick={() => handleDayClick(day)}>
+          <div className="date-underline"><span className="card-header">{day}</span></div>
+          {dayData && (
+            <div>
+              <p>Average Temp: {averageTemperature}°C</p>
+  
+              {frequencyOfRainAsPercentage > 60 ? 
+              <span className="card-emoji">☔</span> 
+              : frequencyOfRainAsPercentage > 49 ? 
+              <span className="card-emoji">☂️</span> 
+              : <span className="card-emoji">☀️</span>
+            }
+              <p>Rained {frequencyOfRain} times in the last {weatherDataRangeInYears} years.</p>
+  
+            </div>
+          )}
+      </div>
+      );
+    } catch (error) {
+      console.error('Error in rendering calendar:', error);
+      return (
+        <div key={day} className="calendar-grid-square error">
+          <div className="date-underline"><span className="card-header">{day}</span></div>
+          <p>Error: Unable to render data for this day.</p>
+        </div>
+      );
+    }
   };
-
-
 
     return (
       <div className="calendar">
