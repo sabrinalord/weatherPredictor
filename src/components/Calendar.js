@@ -40,9 +40,9 @@ const openModal = () => {
       const dayData = averages[day - 1];
       const { averageTemperature, frequencyOfRain } =
         dayData || {};
-  
        const frequencyOfRainAsPercentage = Math.ceil((frequencyOfRain / weatherDataRangeInYears) * 100);
-  
+       console.log(`data for each day displaying as ${dayData}`)
+
       return (
         <div key={day} className="calendar-grid-square" onClick={() => handleDayClick(day)}>
           <div className="date-underline"><span className="card-header">{day}</span></div>
