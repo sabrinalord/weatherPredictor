@@ -13,13 +13,17 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
 ));
   
   const getDaysArrayForMonth = (year, month) => {
-    const daysInMonth = new Date(year, month, 0).getDate();
-    return Array.from({ length: daysInMonth }, (_, index) => index + 1);
+    try{    
+      console.log('getting days of the month')
+      const daysInMonth = new Date(year, month, 0).getDate();
+      return Array.from({ length: daysInMonth }, (_, index) => index + 1);
+    } catch (error) {
+      console.error('error getting days of month:', error)
+    }
   };
   
   const daysArray = getDaysArrayForMonth(parsedYear, parsedMonth);
 
-  const [isModalOpen, setModalOpen] = useState(false);
 
   const renderDaySquare = (day) => {
     try {
@@ -58,6 +62,8 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
       );
     }
   };
+
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
     setModalOpen(true);
