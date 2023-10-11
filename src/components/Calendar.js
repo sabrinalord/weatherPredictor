@@ -14,9 +14,11 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
   
   const getDaysArrayForMonth = (year, month) => {
     try{    
-      console.log(`getting days of the month: ${month.value} in ${year}`)
+      console.log(`getting days of the month: ${month}`)
       console.log(typeof month)
-      const formattedMonth = String(month.value-1).padStart(2, '0');
+      console.log(month)
+      const monthMinus1= month-1
+      const formattedMonth = monthMinus1.toString().padStart(2, '0');
       const date = new Date(year, formattedMonth, 1);
       date.setMonth(date.getMonth() + 1);
       date.setDate(date.getDate() - 1);
