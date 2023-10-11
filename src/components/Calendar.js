@@ -103,24 +103,23 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
           />
         )}
         {isModalOpen && <div className="overlay" />}
-
-        <div className="calendar-header">
-        <h1>{month.name}, {year} </h1>
-        <h3>in {location}</h3>
+        <div className="calendar-container">
+          <div className="calendar-header">
+            <h1>{month.name}, {year} </h1>
+            <h3>in {location}</h3>
+          </div>
+          <div className="calendar-grid">
+            <div className="calendar-grid-days">Sun</div>
+            <div className="calendar-grid-days">Mon</div>
+            <div className="calendar-grid-days">Tue</div>
+            <div className="calendar-grid-days">Wed</div>
+            <div className="calendar-grid-days">Thu</div>
+            <div className="calendar-grid-days">Fri</div>
+            <div className="calendar-grid-days">Sat</div>
+            {blankSquares}
+            {daysArray.map((day) => renderDaySquare(day))} 
+          </div>
         </div>
-      <div className="calendar-grid">
-        <div className="calendar-grid-days">Sun</div>
-        <div className="calendar-grid-days">Mon</div>
-        <div className="calendar-grid-days">Tue</div>
-        <div className="calendar-grid-days">Wed</div>
-        <div className="calendar-grid-days">Thu</div>
-        <div className="calendar-grid-days">Fri</div>
-        <div className="calendar-grid-days">Sat</div>
-        {blankSquares}
-        {daysArray.map((day) => renderDaySquare(day))} 
-     
-
-    </div>
     </div>
     );
 };
