@@ -91,6 +91,19 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
 
     return (
       <div className="calendar">
+
+      {isModalOpen && (
+          <DayDetails
+            day={selectedDay}
+            month={month}
+            location={location}
+            weatherDataRangeInYears={weatherDataRangeInYears}
+            weatherDataByYear={weatherDataByYear}
+            onCloseModal={() => setModalOpen(false)}
+          />
+        )}
+        {isModalOpen && <div className="overlay" />}
+
         <div className="calendar-header">
         <h1>{month.name}, {year} </h1>
         <h3>in {location}</h3>
@@ -105,17 +118,7 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
         <div className="calendar-grid-days">Sat</div>
         {blankSquares}
         {daysArray.map((day) => renderDaySquare(day))} 
-        {isModalOpen && (
-          <DayDetails
-            day={selectedDay}
-            month={month}
-            location={location}
-            weatherDataRangeInYears={weatherDataRangeInYears}
-            weatherDataByYear={weatherDataByYear}
-            onCloseModal={() => setModalOpen(false)}
-          />
-        )}
-        {isModalOpen && <div className="overlay" />}
+     
 
     </div>
     </div>
