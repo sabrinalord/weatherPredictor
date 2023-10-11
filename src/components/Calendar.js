@@ -15,7 +15,9 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
   const getDaysArrayForMonth = (year, month) => {
     try{    
       console.log('getting days of the month')
+
       const fixDateForAllBrowsers = dateString => dateString.replace(/-/g, '/');
+      const dateString = `${year}-${month}`;
       const fixedDateString = fixDateForAllBrowsers(dateString);
       const daysInMonth = new Date(fixedDateString + '-01').getDate();
       const array = Array.from({ length: daysInMonth }, (_, index) => index + 1);
