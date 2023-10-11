@@ -32,7 +32,7 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
     }
   };
   
-  const daysArray = getDaysArrayForMonth(parsedYear, parsedMonth);
+  const daysArray = getDaysArrayForMonth(year, month);
 
 
   const renderDaySquare = (day) => {
