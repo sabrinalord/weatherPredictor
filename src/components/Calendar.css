@@ -61,9 +61,13 @@
     cursor:pointer;
   }
 
-  .calendar-grid-square:hover{
-    background-color:rgba(123, 136, 252, 0.318);
+  .read-more-btn{
+    font-weight:700;
 }
+
+  .read-more-btn:hover{
+    text-decoration: underline;
+  }
 
   .weekday{
     border-bottom: 1px solid black;

@@ -51,6 +51,7 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
               : <span className="card-emoji">☀️</span>
             }
               <p>Rained {frequencyOfRain} times in last {weatherDataRangeInYears} years.</p>
+              <p className="read-more-btn" onClick={() => handleDayClick(day)}>Read more</p>
   
             </div>
           )}
