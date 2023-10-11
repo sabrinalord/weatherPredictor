@@ -43,7 +43,7 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
           <div className="date-underline"><span className="card-header">{day}</span></div>
           {dayData && (
             <div>
-              <p>Average Temp: {averageTemperature}°C</p>
+              <p>Avg. Temp: {averageTemperature}°C</p>
   
               {frequencyOfRainAsPercentage > 60 ? 
               <span className="card-emoji">☔</span> 
@@ -51,7 +51,7 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
               <span className="card-emoji">☂️</span> 
               : <span className="card-emoji">☀️</span>
             }
-              <p>Rained {frequencyOfRain} times in the last {weatherDataRangeInYears} years.</p>
+              <p>Rained {frequencyOfRain} times in last {weatherDataRangeInYears} years.</p>
   
             </div>
           )}
