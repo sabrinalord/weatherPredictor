@@ -5,6 +5,7 @@ import DayDetails from './DayDetails';
 
 const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, weatherDataByYear}) => {
   const [selectedDay, setSelectedDay] = useState("");
+  console.log('year is', typeof year)
   const parsedMonth = new Date(`${month.value} 1, ${year}`).getMonth() + 1; 
   const parsedYear = parseInt(year, 10);
   const firstDayOfWeek = new Date(parsedYear, parsedMonth - 1, 1).getDay() || 7;
