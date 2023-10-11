@@ -5,26 +5,20 @@ import DayDetails from './DayDetails';
 
 const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, weatherDataByYear}) => {
   const [selectedDay, setSelectedDay] = useState("");
-  console.log('year is', typeof year)
-  const parsedMonth = new Date(`${month.value} 1, ${year}`).getMonth() + 1; 
-  const parsedYear = parseInt(year, 10);
-  const firstDayOfWeek = new Date(parsedYear, parsedMonth - 1, 1).getDay() || 7;
+  const monthMinus1= month.value - 1
+  const firstDayOfWeek = new Date(parseInt(year, 10), monthMinus1, 1).getDay() || 7;
   const blankSquares = Array.from({ length: firstDayOfWeek }).map((_, index) => (
 <div key={`blank-${index}`} className="blank-square"></div>
 ));
   
-  const getDaysArrayForMonth = (year, month) => {
+  const getDaysArrayForMonth = (year, monthMinus1) => {
     try{    
-      console.log(`getting days of the month: ${month}`)
-      const monthMinus1= month.value - 1
       const formattedMonth = monthMinus1.toString().padStart(2, '0');
-      console.log(`formattedMonth is ${formattedMonth}` )
       const date = new Date(year, formattedMonth, 1);
       date.setMonth(date.getMonth() + 1);
       date.setDate(date.getDate() - 1);
       const daysInMonth = date.getDate();
       const array = Array.from({ length: daysInMonth }, (_, index) => index + 1);
-      console.log('Days in month:', daysInMonth); 
       
       return array;
     } catch (error) {
@@ -32,7 +26,7 @@ const Calendar = ( {month, year, averages, weatherDataRangeInYears, location, we
     }
   };
   
-  const daysArray = getDaysArrayForMonth(year, month);
+  const daysArray = getDaysArrayForMonth(year, monthMinus1);
 
 
   const renderDaySquare = (day) => {
