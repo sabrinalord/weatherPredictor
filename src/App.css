@@ -8,6 +8,15 @@ body{
   background-blend-mode: overlay;
 }
 
+p{
+  line-height: 1.5em;
+  text-align: center;
+}
+
+ a {
+  color:white;
+ }
+
 .App{
   display: flex;
   flex-direction: column;

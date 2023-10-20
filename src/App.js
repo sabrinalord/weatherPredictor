@@ -46,14 +46,14 @@ function App() {
 
 
       <div className="site-header">
-      <h1>Weather Predictor</h1>
-      <h4>Predict the weather based on the last {weatherDataRangeInYears} years of weather data</h4>
-      <p>This site will spin down due to in-activity. If you don't see results below, please wait 30seconds and try again. </p>
+        <h1>Weather Predictor</h1>
+        <p>The weather data is sourced from <a href="https://open-meteo.com/">Open-Meteo</a>. Predictions are made from the mean average weather data for your selected location from the last 10 years.  </p>
 
-        <WeatherForm onFormSubmit={handleFormSubmit} />
+          <WeatherForm onFormSubmit={handleFormSubmit} />
+          <p>This site will spin down due to in-activity. If you don't see results below, please wait 30 seconds and try again. </p>
+
       </div>
      
-
         <WeatherData    
         month={selectedMonth}
         latitude={selectedLatitude}
@@ -74,8 +74,7 @@ function App() {
             location={selectedLocation}
             weatherDataByYear={weatherDataByYear}
             />
-          </div>
-        )
+          </div>)
         }
         
     </div>
